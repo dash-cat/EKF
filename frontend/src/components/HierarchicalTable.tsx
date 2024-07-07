@@ -31,7 +31,7 @@ const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSave }) =
     );
   };
 
-  const handleInputChange = (id: number, field: string, value: any, isSubItem = false, parentId = null) => {
+  const handleInputChange = (id: number, field: string, value: any, isSubItem = false, parentId: number | null = null) => {
     setTableData((prevData) =>
       prevData.map((item) => {
         if (item.id === id && !isSubItem) {
@@ -114,10 +114,10 @@ const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSave }) =
 
   return (
     <div>
-    <div className='table-button'>
-    <button className="save-button" onClick={handleSave}>Сохранить изменения</button>
-      <button className="export-button" onClick={downloadCSV}>Выгрузить в CSV</button>
-      <button className="export-button" onClick={downloadXML}>Выгрузить в XML</button>
+        <div className='table-button'>
+        <button className="save-button" onClick={handleSave}>Сохранить изменения</button>
+        <button className="export-button" onClick={downloadCSV}>Выгрузить в CSV</button>
+        <button className="export-button" onClick={downloadXML}>Выгрузить в XML</button>
     </div>
       <table className="data-table">
         <thead>
