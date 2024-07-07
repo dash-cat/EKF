@@ -1,0 +1,42 @@
+.load_schema {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  max-width: 500px;
+  margin: 20px auto;
+  background-color: #f9f9f9;
+  text-align: center;
+  font-family: 'Poynter Gothic', sans-serif;
+}
+
+.load_schema h2 {
+  margin-bottom: 20px;
+}
+
+.upload-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .upload-button:hover {
+    background-color: #45a049;
+  }
+
+
+.progress-bar-inner {
+  height: 20px;
+  background-color: #4CAF50;
+  text-align: center;
+  color: white;
+  line-height: 20px;
+}

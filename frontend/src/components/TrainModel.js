@@ -53,14 +53,13 @@ function TrainModel() {
   }, [trainingInProgress]);
 
   return (
-    <div>
-      <h2>Train Model</h2>
+    <div className='window-train'>
+      <h2>Тренировка модели</h2>
       <FileUpload handleFilesChange={handleFilesChange} selectedFiles={files} />
-      <button className="upload-button" onClick={handleUpload}>Start Training</button>
-
+      
       {uploadedFiles && uploadedFiles.length > 0 && (
-        <div>
-          <h3>Uploaded Files:</h3>
+        <div className='upload-container'>
+          <h3>Загруженные файлы:</h3>
           <ul>
             {uploadedFiles.map((file, index) => (
               <li key={index}>{file.name}</li>
@@ -68,10 +67,11 @@ function TrainModel() {
           </ul>
         </div>
       )}
-
+      <button className="upload-button" onClick={handleUpload}>Начать тренировку</button>
+      
       {trainingInProgress && (
         <div>
-          <h3>Training Progress</h3>
+          <h3>Прогресс тренировки</h3>
           <div className="progress-bar">
             <div className="progress-bar-inner" style={{ width: `${trainingProgress}%` }}>
               {trainingProgress}%
@@ -82,7 +82,7 @@ function TrainModel() {
 
       {showModelSelection && (
         <div>
-          <h3>Select Trained Model</h3>
+          <h3>Выберите обученную модель</h3>
           <ul>
             {models.map((model) => (
               <li key={model.id}>

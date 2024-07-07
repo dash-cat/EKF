@@ -26,26 +26,28 @@ training_in_progress = False
 training_progress = 0
 
 @app.post("/upload")
-async def upload_drawing(file: UploadFile = File(...)):
-    content = await file.read()
-    drawing_data = utils.process_drawing(content)
-    estimate = utils.calculate_estimate(drawing_data)
+async def upload_drawing(files: List[UploadFile] = File(...)):
+    for file in files:
+        content = await file.read()
+        drawing_data = utils.process_drawing(content)
+        estimate = utils.calculate_estimate(drawing_data)
     
-    df = pd.DataFrame(estimate)
+        df = pd.DataFrame(estimate)
     
-    if not os.path.exists("upload"):
-        os.makedirs("upload")
+        if not os.path.exists("upload"):
+            os.makedirs("upload")
     
-    # Сохранение оригинального файла
-    original_file_path = os.path.join("upload", file.filename)
-    with open(original_file_path, "wb") as f:
-        f.write(content)
+        # Сохранение оригинального файла
+        original_file_path = os.path.join("upload", file.filename)
+        with open(original_file_path, "wb") as f:
+            f.write(content)
     
-    # Сохранение CSV файла с оценкой
-    csv_file_path = os.path.join("upload", "estimate.csv")
-    df.to_csv(csv_file_path, index=False)
+        # Сохранение CSV файла с оценкой
+        csv_file_path = os.path.join("upload", f"{file.filename}_estimate.csv")
+        df.to_csv(csv_file_path, index=False)
     
-    return {"filename": file.filename, "original_file_path": original_file_path, "csv_file_path": csv_file_path}
+    return {"filenames": [file.filename for file in files]}
+
 
 
 @app.post("/train_model/")

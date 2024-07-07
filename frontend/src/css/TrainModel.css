@@ -70,3 +70,13 @@
   color: white;
   transition: width 0.2s;
 }
+.window-train {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.upload-container {
+  display: flex;
+  align-items: center;
+}
