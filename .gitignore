@@ -1,5 +1,4 @@
 /backend/app/__pycache__
 /backend/upload/*
 /backend/upload_train_zip/*
-frontend/package-lock.json
-
+frontend/package-lock*

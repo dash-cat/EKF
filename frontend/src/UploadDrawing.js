@@ -1,36 +1,31 @@
 import React, { useState } from 'react';
+import FileUpload from './FileUpload';
 
 function UploadDrawing() {
-  const [file, setFile] = useState(null);
+  const [files, setFiles] = useState([]);
 
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+  const handleFilesChange = (acceptedFiles) => {
+    setFiles(acceptedFiles);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleUpload = async () => {
     const formData = new FormData();
-    formData.append('file', file);
-
-    try {
-      const response = await fetch('/upload', {
-        method: 'POST',
-        body: formData,
-      });
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error('Error uploading file:', error);
+    for (const file of files) {
+      formData.append('files', file);
     }
+    const response = await fetch('http://localhost:8000/upload/', {
+      method: 'POST',
+      body: formData,
+    });
+    const data = await response.json();
+    console.log(data);
   };
 
   return (
-    <div className="upload-drawing">
-      <h2>Загрузка рисунка</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="file" onChange={handleFileChange} />
-        <button type="submit">Загрузить</button>
-      </form>
+    <div>
+      <h2>Загрузить схему</h2>
+      <FileUpload handleFilesChange={handleFilesChange} selectedFiles={files} />
+      <button className="upload-button" onClick={handleUpload}>Загрузить</button>
     </div>
   );
 }

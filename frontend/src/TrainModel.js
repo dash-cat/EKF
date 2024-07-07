@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import FileUpload from './FileUpload';
 import './css/TrainModel.css';
 
 function TrainModel() {
@@ -10,11 +11,11 @@ function TrainModel() {
   const [models, setModels] = useState([]);
   const [selectedModel, setSelectedModel] = useState('');
 
-  const handleFilesChange = (e) => {
-    setFiles(e.target.files);
-    setUploadedFiles(Array.from(e.target.files));
+  const handleFilesChange = (acceptedFiles) => {
+    setFiles(acceptedFiles);
+    setUploadedFiles(acceptedFiles);
   };
-  
+
   const handleUpload = async () => {
     const formData = new FormData();
     for (const file of files) {
@@ -26,46 +27,38 @@ function TrainModel() {
       body: formData,
     });
     const data = await response.json();
-    console.log(data);
-  };
-
-  const fetchModels = async () => {
-    const response = await fetch('http://localhost:8000/models/');
-    const data = await response.json();
-    setModels(data.models);
+    setUploadedFiles(data.files);
   };
 
   useEffect(() => {
     const interval = setInterval(async () => {
       if (trainingInProgress) {
         const response = await fetch('http://localhost:8000/training_progress');
-        if (response.ok) {
-          const data = await response.json();
-          setTrainingProgress(data.progress);
-  
-          if (data.progress >= 100) {
-            clearInterval(interval);
-            setTrainingInProgress(false);
-            setShowModelSelection(true);
-            fetchModels();
-          }
-        } else {
-          setTrainingProgress(0);
+        const data = await response.json();
+        setTrainingProgress(data.progress);
+
+        if (data.progress === 100) {
+          clearInterval(interval);
           setTrainingInProgress(false);
+          setShowModelSelection(true);
+
+          const modelsResponse = await fetch('http://localhost:8000/models/');
+          const modelsData = await modelsResponse.json();
+          setModels(modelsData.models);
         }
       }
     }, 1000);
-  
+
     return () => clearInterval(interval);
   }, [trainingInProgress]);
 
   return (
     <div>
       <h2>Train Model</h2>
-      <input type="file" multiple onChange={handleFilesChange} />
-      <button onClick={handleUpload}>Start Training</button>
-  
-      {uploadedFiles.length > 0 && (
+      <FileUpload handleFilesChange={handleFilesChange} selectedFiles={files} />
+      <button className="upload-button" onClick={handleUpload}>Start Training</button>
+
+      {uploadedFiles && uploadedFiles.length > 0 && (
         <div>
           <h3>Uploaded Files:</h3>
           <ul>
@@ -75,7 +68,7 @@ function TrainModel() {
           </ul>
         </div>
       )}
-  
+
       {trainingInProgress && (
         <div>
           <h3>Training Progress</h3>
@@ -86,7 +79,7 @@ function TrainModel() {
           </div>
         </div>
       )}
-  
+
       {showModelSelection && (
         <div>
           <h3>Select Trained Model</h3>
@@ -97,7 +90,6 @@ function TrainModel() {
               </li>
             ))}
           </ul>
-          <button onClick={() => console.log(`Selected model: ${selectedModel}`)}>Confirm Selection</button>
         </div>
       )}
     </div>
