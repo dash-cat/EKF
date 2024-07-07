@@ -1,11 +1,21 @@
 from typing import List
 from fastapi import FastAPI, UploadFile, File
+from fastapi.middleware.cors import CORSMiddleware
 from . import models, crud
 from . import utils
 from .database import engine, SessionLocal
 import pandas as pd
 
 app = FastAPI()
+
+# Добавьте эту строку для обработки CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Можете заменить "*" на конкретные домены, если хотите ограничить доступ
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 models.Base.metadata.create_all(bind=engine)
 
