@@ -3,102 +3,67 @@ import './css/TrainModel.css';
 
 function TrainModel() {
   const [files, setFiles] = useState([]);
-  const [progress, setProgress] = useState(null);
-  const [models, setModels] = useState([]);
-  const [selectedModel, setSelectedModel] = useState(null);
-  const [trainingStatus, setTrainingStatus] = useState('');
+  const [uploadedFiles, setUploadedFiles] = useState([]);
+  const [trainingProgress, setTrainingProgress] = useState(0);
+  const [trainingInProgress, setTrainingInProgress] = useState(false);
 
   const handleFilesChange = (e) => {
-    setFiles(e.target.files);
+    setFiles([...e.target.files]);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleUpload = async () => {
     const formData = new FormData();
     for (const file of files) {
       formData.append('files', file);
     }
-
-    try {
-      const response = await fetch('/train_model/', {
-        method: 'POST',
-        body: formData,
-      });
-      const data = await response.json();
-      setTrainingStatus(data.status);
-    } catch (error) {
-      console.error('Error starting training:', error);
-    }
+    setTrainingInProgress(true);
+    const response = await fetch('/train_model/', {
+      method: 'POST',
+      body: formData,
+    });
+    const data = await response.json();
+    setUploadedFiles(data.files);
   };
 
-  const fetchModels = async () => {
-    try {
-      const response = await fetch('/models/');
-      const data = await response.json();
-      setModels(data.models);
-    } catch (error) {
-      console.error('Error fetching models:', error);
-    }
-  };
-
-  const fetchProgress = async () => {
-    try {
-      const response = await fetch('/train_progress/');
-      const data = await response.json();
-      setProgress(data.progress);
-    } catch (error) {
-      console.error('Error fetching progress:', error);
-    }
-  };
-
-  const handleModelChange = (e) => {
-    setSelectedModel(e.target.value);
-  };
-
-  const stopTraining = async () => {
-    try {
-      const response = await fetch('/stop_training/', {
-        method: 'POST',
-      });
-      const data = await response.json();
-      setTrainingStatus(data.status);
-    } catch (error) {
-      console.error('Error stopping training:', error);
-    }
+  const fetchTrainingProgress = async () => {
+    const response = await fetch('/training_progress');
+    const data = await response.json();
+    setTrainingProgress(data.progress);
   };
 
   useEffect(() => {
-    fetchModels();
-    const interval = setInterval(() => {
-      fetchProgress();
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
+    if (trainingInProgress) {
+      const interval = setInterval(() => {
+        fetchTrainingProgress();
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [trainingInProgress]);
 
   return (
-    <div className="train-model">
+    <div>
       <h2>Train Model</h2>
-      <form onSubmit={handleSubmit}>
+      <div>
         <input type="file" multiple onChange={handleFilesChange} />
-        <button type="submit">Start Training</button>
-      </form>
-      <button onClick={stopTraining}>Stop Training</button>
-      <div className="progress">
-        {progress !== null && <p>Training Progress: {progress}%</p>}
-        {trainingStatus && <p>Status: {trainingStatus}</p>}
+        <button onClick={handleUpload} disabled={trainingInProgress}>Загрузить данные для дообучения</button>
       </div>
-      <div className="models">
-        <h3>Models</h3>
-        <select onChange={handleModelChange}>
-          {models.map((model) => (
-            <option key={model.id} value={model.id}>
-              {model.name}
-            </option>
+      <div>
+        <h3>Uploaded Files</h3>
+        <ul>
+          {uploadedFiles.map((file, index) => (
+            <li key={index}>{file}</li>
           ))}
-        </select>
+        </ul>
       </div>
+      {trainingInProgress && (
+        <div>
+          <h3>Прогресс обучения: {trainingProgress}%</h3>
+          <progress value={trainingProgress} max="100"></progress>
+        </div>
+      )}
     </div>
   );
 }
+
 
 export default TrainModel;

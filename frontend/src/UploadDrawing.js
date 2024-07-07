@@ -7,36 +7,29 @@ function UploadDrawing() {
     setFile(e.target.files[0]);
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault(); // Предотвратить стандартное поведение формы
-  
-    const fileInput = document.querySelector('input[type="file"]');
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const formData = new FormData();
-    formData.append('file', fileInput.files[0]);
-  
+    formData.append('file', file);
+
     try {
-      const response = await fetch('http://localhost:8000/upload', {
+      const response = await fetch('/upload', {
         method: 'POST',
         body: formData,
       });
-  
-      if (!response.ok) {
-        throw new Error(`Ошибка: ${response.status}`);
-      }
-  
       const data = await response.json();
       console.log(data);
     } catch (error) {
-      console.error('Ошибка:', error);
+      console.error('Error uploading file:', error);
     }
   };
 
   return (
-    <div>
-      <h2>Upload Drawing</h2>
+    <div className="upload-drawing">
+      <h2>Загрузка рисунка</h2>
       <form onSubmit={handleSubmit}>
         <input type="file" onChange={handleFileChange} />
-        <button type="submit">Upload</button>
+        <button type="submit">Загрузить</button>
       </form>
     </div>
   );

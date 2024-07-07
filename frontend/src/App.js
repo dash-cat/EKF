@@ -1,16 +1,46 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import UploadDrawing from './UploadDrawing';
+import React, { useState } from 'react';
 import TrainModel from './TrainModel';
+import UploadDrawing from './UploadDrawing';
+import Documentation from './Documentation';
+import './App.css';
 
 function App() {
+  const [activeTab, setActiveTab] = useState('upload');
+
+  const renderContent = () => {
+    if (activeTab === 'upload') {
+      return <UploadDrawing />;
+    } else if (activeTab === 'train') {
+      return <TrainModel />;
+    } else if (activeTab === 'documentation') {
+      return <Documentation />;
+    }
+  };
+
   return (
-    <Router>
-      <Switch>
-        <Route path="/upload" component={UploadDrawing} />
-        <Route path="/train" component={TrainModel} />
-      </Switch>
-    </Router>
+    <div className="app">
+      <div className="status-bar">
+        <button
+          className={activeTab === 'upload' ? 'active' : ''}
+          onClick={() => setActiveTab('upload')}
+        >
+          Загрузка
+        </button>
+        <button
+          className={activeTab === 'train' ? 'active' : ''}
+          onClick={() => setActiveTab('train')}
+        >
+          Тренировка
+        </button>
+        <button
+          className={activeTab === 'documentation' ? 'active' : ''}
+          onClick={() => setActiveTab('documentation')}
+        >
+          Документация
+        </button>
+      </div>
+      <div className="content">{renderContent()}</div>
+    </div>
   );
 }
 

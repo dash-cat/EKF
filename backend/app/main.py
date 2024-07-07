@@ -48,7 +48,7 @@ async def upload_drawing(file: UploadFile = File(...)):
 
 
 @app.post("/train_model/")
-async def train_model(files: List[UploadFile] = File(...), background_tasks: BackgroundTasks):
+async def train_model(background_tasks: BackgroundTasks, files: List[UploadFile] = File(...)):
     global training_in_progress, training_progress
     if training_in_progress:
         return JSONResponse(content={"message": "Training already in progress"}, status_code=400)
@@ -56,11 +56,12 @@ async def train_model(files: List[UploadFile] = File(...), background_tasks: Bac
     training_in_progress = True
     training_progress = 0
 
-    def train():
+    def train(file_paths: List[str]):
         global training_in_progress, training_progress
-        for file in files:
-            content = file.read()
-            utils.add_drawing_to_training_data(content)
+        # Mock processing of files
+        for file_path in file_paths:
+            # Mock function to simulate processing
+            utils.add_drawing_to_training_data(file_path)
         
         for i in range(10):
             if not training_in_progress:
@@ -71,11 +72,18 @@ async def train_model(files: List[UploadFile] = File(...), background_tasks: Bac
         utils.train_model()
         training_in_progress = False
 
-    background_tasks.add_task(train)
-    return {"status": "Training started"}
+    file_paths = []
+    for file in files:
+        file_location = f"temp/{file.filename}"
+        with open(file_location, "wb+") as file_object:
+            file_object.write(await file.read())
+        file_paths.append(file_location)
 
-@app.get("/train_progress/")
-async def get_train_progress():
+    background_tasks.add_task(train, file_paths)
+    return {"status": "Training started", "files": [file.filename for file in files]}
+
+@app.get("/training_progress")
+async def get_training_progress():
     return {"progress": training_progress}
 
 @app.get("/models/")
