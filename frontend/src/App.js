@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import TrainModel from './TrainModel';
-import UploadDrawing from './UploadDrawing';
-import Documentation from './Documentation';
+import TrainModel from './components/TrainModel';
+import UploadDrawing from './components/UploadDrawing.tsx';
+import Documentation from './components/Documentation';
 import './App.css';
 
 function App() {

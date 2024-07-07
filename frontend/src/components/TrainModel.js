@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import FileUpload from './FileUpload';
-import './css/TrainModel.css';
+import FileUpload from './FileUpload.tsx';
+import '../css/TrainModel.css';
 
 function TrainModel() {
   const [files, setFiles] = useState([]);

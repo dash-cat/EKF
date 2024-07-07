@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
-import FileUpload from './FileUpload';
-import DataTable from './DataTable';
-import './css/UploadDrawing.css';
+import React, { useState, useEffect } from 'react';
+import FileUpload from './FileUpload.tsx';
+import HierarchicalTable from './HierarchicalTable.tsx';
+import '../css/UploadDrawing.css';
 
 const UploadDrawing: React.FC = () => {
   const [files, setFiles] = useState<File[]>([]);
   const [uploadProgress, setUploadProgress] = useState<number>(0);
-  const [uploadedData, setUploadedData] = useState<
-    Array<{ article: string, name: string, amount: number, price: string, totalPrice: string }>
-  >([]);
+  const [uploadedData, setUploadedData] = useState<any[]>([]);
 
   const handleFilesChange = (acceptedFiles: File[]) => {
     setFiles(acceptedFiles);
@@ -17,47 +15,57 @@ const UploadDrawing: React.FC = () => {
   const handleUpload = async () => {
     const formData = new FormData();
     for (const file of files) {
-      formData.append('file', file); // Change 'files' to 'file' to match backend
+      formData.append('file', file); // Append each file to the FormData
     }
 
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:8000/upload', true);
+    try {
+      const response = await fetch('http://localhost:8000/upload', {
+        method: 'POST',
+        body: formData,
+      });
 
-    xhr.upload.onprogress = (event) => {
-      if (event.lengthComputable) {
-        const percentComplete = (event.loaded / event.total) * 100;
-        setUploadProgress(percentComplete);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-    };
 
-    xhr.onload = () => {
-      if (xhr.status === 200) {
-        const data = JSON.parse(xhr.responseText);
-        console.log(data);
-        // Mock data
-        const mockData = [
-          { article: 'mb-20-80-60n', name: 'Каркас ВРУ-1 Unit S сварной', amount: 1, price: '43 322,82', totalPrice: '43 322,82' },
-          { article: 'an-1-01', name: 'Наклейка "Молния"', amount: 1, price: '14,16', totalPrice: '14,16' },
-          { article: 'mb15-08-02-07', name: 'Цоколь к ВРУ Unit S', amount: 1, price: '2 961,97', totalPrice: '2 961,97' }
-        ];
-        setUploadedData(mockData);
+      const data = await response.json();
+      setUploadedData(data);
+      setUploadProgress(100);
+    } catch (error) {
+      console.error('Error uploading files:', error);
+    }
+  };
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch('http://localhost:8000/mock_data');
+      if (response.ok) {
+        const data = await response.json();
+        setUploadedData(data);
       } else {
-        console.error('Error uploading files:', xhr.statusText);
+        console.error('Error fetching mock data:', response.statusText);
       }
-    };
+    } catch (error) {
+      console.error('Error fetching mock data:', error);
+    }
+  };
 
-    xhr.onerror = () => {
-      console.error('Error uploading files:', xhr.statusText);
-    };
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-    xhr.send(formData);
+  const handleSaveChanges = (data: any[]) => {
+    console.log("Saved data:", data);
+    // You can also implement an API call to save the edited data if needed
   };
 
   return (
     <div className="load_schema">
       <h2>Загрузить схему</h2>
-      <FileUpload handleFilesChange={handleFilesChange} selectedFiles={files} />
-      <button className="upload-button" onClick={handleUpload}>Загрузить</button>
+      <div className='upload_container'>
+        <FileUpload handleFilesChange={handleFilesChange} selectedFiles={files} />
+        <button className="upload-button" onClick={handleUpload}>Загрузить</button>
+      </div>
 
       {uploadProgress > 0 && uploadProgress < 100 && (
         <div className="progress-bar">
@@ -67,7 +75,7 @@ const UploadDrawing: React.FC = () => {
         </div>
       )}
 
-      {uploadedData.length > 0 && <DataTable data={uploadedData} />}
+      {uploadedData.length > 0 && <HierarchicalTable data={uploadedData} onSave={handleSaveChanges} />}
     </div>
   );
 }

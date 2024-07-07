@@ -2,7 +2,6 @@
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  max-width: 500px;
   margin: 20px auto;
   background-color: #f9f9f9;
   text-align: center;
@@ -11,6 +10,11 @@
 
 .load_schema h2 {
   margin-bottom: 20px;
+}
+
+.upload_container {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .upload-button {
@@ -26,6 +30,8 @@
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s ease;
+    height: 78px;
+    margin-left: 30px;
   }
   
   .upload-button:hover {

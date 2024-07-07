@@ -9,15 +9,15 @@
   cursor: pointer;
   text-align: center;
   background-color: #f8f9fa;
-  width: 300px;
+  width: 700px;
   display: flex;
-  margin: 30px;
-  justify-content: space-evenly;
+  flex-direction: column;
+  border-radius: 4px;
+  height: 40px;
 }
 .dropzone {
   border: 2px dashed #4CAF50;
   border-radius: 4px;
-  padding: 20px;
   cursor: pointer;
   background-color: #f9f9f9;
   transition: background-color 0.3s ease;
@@ -62,8 +62,9 @@
   cursor: pointer;
   display: inline-block;
   font-size: 16px;
-  margin-top: 10px;
   transition: background-color 0.3s ease;
+  height: 81px;
+  padding: 36px;
 }
 
 .upload-button:hover {

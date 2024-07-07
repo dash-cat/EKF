@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-import './css/FileUpload.css';
+import '../css/FileUpload.css';
 
 interface FileUploadProps {
   handleFilesChange: (files: File[]) => void;

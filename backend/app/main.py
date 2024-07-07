@@ -25,6 +25,39 @@ models.Base.metadata.create_all(bind=engine)
 training_in_progress = False
 training_progress = 0
 
+mock_data = [
+    {
+        "id": 1,
+        "article": "mb-20-80-60n",
+        "name": "Каркас ВРУ-1 Unit S сварной",
+        "amount": 1,
+        "price": "43 322,82",
+        "totalPrice": "43 322,82",
+        "subItems": [
+            {
+                "id": 2,
+                "article": "an-1-01",
+                "name": "Наклейка 'Молния'",
+                "amount": 1,
+                "price": "14,16",
+                "totalPrice": "14,16"
+            },
+            {
+                "id": 3,
+                "article": "mb15-08-02-07",
+                "name": "Цоколь к ВРУ Unit S",
+                "amount": 1,
+                "price": "2 961,97",
+                "totalPrice": "2 961,97"
+            }
+        ]
+    }
+]
+
+@app.get("/mock_data")
+async def get_mock_data():
+    return mock_data
+
 @app.post("/upload")
 async def upload_drawing(files: List[UploadFile] = File(...)):
     for file in files:
