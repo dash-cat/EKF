@@ -2,3 +2,5 @@
 /backend/upload/*
 /backend/upload_train_zip/*
 frontend/package-lock*
+.venv/
+.idea/*
