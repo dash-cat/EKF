@@ -3,6 +3,7 @@ import TrainModel from './TrainModel.tsx';
 import UploadDrawing from './UploadDrawing.tsx';
 import Documentation from './Documentation.tsx';
 import Presentation from './Presentation.tsx';
+import ComponentTester from './ComponentTester.tsx';
 
 const TabNavigation: React.FC = () => {
   const [activeTab, setActiveTab] = useState('upload');
@@ -17,6 +18,8 @@ const TabNavigation: React.FC = () => {
         return <Documentation />;
       case 'presentation':
         return <Presentation />;
+      case 'tester':
+        return <ComponentTester />;
       default:
         return <UploadDrawing />;
     }
@@ -48,6 +51,12 @@ const TabNavigation: React.FC = () => {
           onClick={() => setActiveTab('presentation')}
         >
           Презентация
+        </button>
+        <button
+          className={activeTab === 'tester' ? 'active' : ''}
+          onClick={() => setActiveTab('tester')}
+        >
+          Тестер
         </button>
       </div>
       <div className="content">{renderContent()}</div>
