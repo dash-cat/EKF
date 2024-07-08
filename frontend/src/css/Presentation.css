@@ -1,38 +1,50 @@
 .presentation {
-    text-align: center;
-  }
-  
+  text-align: center;
+}
+
 .image-container {
-position: relative;
-width: 100%;
-max-width: 600px;
-margin: auto;
-overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  overflow: hidden;
 }
 
 .image-container img {
-width: 100%;
-height: auto;
-transition: transform 0.5s ease-in-out;
+  width: 600px;
+  height: 500px;
+  transition: transform 0.5s ease-in-out;
 }
 
 .controls {
-display: flex;
-justify-content: center;
-margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .controls button {
-margin: 0 5px;
-padding: 10px 20px;
-background-color: #4CAF50;
-color: white;
-border: none;
-cursor: pointer;
-transition: background-color 0.3s;
+  margin: 0 5px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .controls button:hover {
-background-color: #45a049;
+  background-color: #45a049;
+  transform: scale(1.1);
 }
-  
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

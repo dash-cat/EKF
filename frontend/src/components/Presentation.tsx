@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import '../css/Presentation.css'; // Ensure you have styles for this component
+import '../css/Presentation.css';
 
 const Presentation: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const images = [
-    'path/to/your/image1.jpg',
-    'path/to/your/image2.jpg',
-    'path/to/your/image3.jpg',
+    '/static/1.jpg',
+    '/static/2.jpg',
+    '/static/3.jpg',
   ];
 
   const handleNext = () => {
@@ -21,9 +21,11 @@ const Presentation: React.FC = () => {
     <div className="presentation">
       <h2>Презентация</h2>
       <div className="image-container">
-        <button onClick={handlePrevious}>Previous</button>
         <img src={images[currentImageIndex]} alt="presentation" className="image" />
-        <button onClick={handleNext}>Next</button>
+      </div>
+      <div className="controls">
+        <button onClick={handlePrevious}>Предыдущий</button>
+        <button onClick={handleNext}>Следующий</button>
       </div>
     </div>
   );

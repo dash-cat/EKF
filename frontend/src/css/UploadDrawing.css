@@ -56,10 +56,6 @@
   transition: background-color 0.3s ease;
 }
 
-.upload-button:not(.disabled) {
-  background-color: blue;
-}
-
 .upload-status {
   margin-top: 10px;
   padding: 10px;
