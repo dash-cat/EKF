@@ -40,8 +40,28 @@
     flex-direction: column;
  } 
 
- .table-button {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
- }
+.table-button {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 10px;
+}
+
+.arrow {
+  cursor: pointer;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.arrow.collapsed {
+  transform: rotate(-90deg);
+}
+
+.sub-row {
+  display: none;
+  transition: all 0.3s ease;
+}
+
+.sub-row.expanded {
+  display: table-row;
+}

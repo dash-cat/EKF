@@ -134,6 +134,7 @@ const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSave }) =
             <React.Fragment key={item.id}>
               <tr onClick={() => toggleRow(item.id)} className="main-row">
                 <td>
+                  <span className={`arrow ${expandedRows.includes(item.id) ? 'expanded' : 'collapsed'}`}>&#9660;</span>
                   <input
                     type="text"
                     value={item.article}
@@ -170,7 +171,7 @@ const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSave }) =
                 </td>
               </tr>
               {item.subItems && expandedRows.includes(item.id) && item.subItems.map((subItem) => (
-                <tr key={subItem.id} className="sub-row">
+                <tr key={subItem.id} className={`sub-row ${expandedRows.includes(item.id) ? 'expanded' : ''}`}>
                   <td>
                     <input
                       type="text"
