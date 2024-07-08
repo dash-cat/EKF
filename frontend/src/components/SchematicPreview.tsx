@@ -1,14 +1,6 @@
 import React from 'react';
 import '../css/SchematicPreview.css';
-
-interface BoundingBox {
-  id: number;
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-  isActive: boolean;
-}
+import BoundingBox from '../models/BoundingBox.ts';
 
 interface BoundingBoxProps {
   imageSrc: string;

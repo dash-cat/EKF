@@ -1,12 +1,20 @@
 import React from 'react';
+import BoundingBox from '../models/BoundingBox.ts';
 import SchematicPreview from './SchematicPreview.tsx';
+import json from './annotations.json';
 
 const ComponentTester: React.FC = () => {
-  const boxes = [
-    { id: 1, x: 50, y: 50, width: 100, height: 100, isActive: false },
-    { id: 2, x: 200, y: 150, width: 150, height: 100, isActive: true },
-    { id: 3, x: 400, y: 200, width: 120, height: 120, isActive: false },
-  ];
+  const image = json.images.find((img: any) => img.file_name === '2.jpg');
+  const imageId = image ? image.id : null;
+
+  const boxes: BoundingBox[] = json.annotations.map((annotation: any) => ({
+    id: annotation.id,
+    x: annotation.bbox[0],
+    y: annotation.bbox[1],
+    width: annotation.bbox[2],
+    height: annotation.bbox[3],
+    isActive: annotation.id == 19,
+  }));
 
   return (
     <div>
