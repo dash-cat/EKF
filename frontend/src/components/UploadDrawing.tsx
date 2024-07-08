@@ -15,7 +15,7 @@ const UploadDrawing: React.FC = () => {
   const handleUpload = async () => {
     const formData = new FormData();
     for (const file of files) {
-      formData.append('file', file); // Append each file to the FormData
+      formData.append('file', file)
     }
 
     try {
@@ -29,7 +29,7 @@ const UploadDrawing: React.FC = () => {
       }
 
       const data = await response.json();
-      setUploadedData(data);
+      setUploadedData(data.filenames);
       setUploadProgress(100);
     } catch (error) {
       console.error('Error uploading files:', error);
