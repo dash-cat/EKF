@@ -1,24 +1,29 @@
 import React, { useState } from 'react';
-import TrainModel from './components/TrainModel';
-import UploadDrawing from './components/UploadDrawing.tsx';
-import Documentation from './components/Documentation';
-import './App.css';
+import TrainModel from './TrainModel.tsx';
+import UploadDrawing from './UploadDrawing.tsx';
+import Documentation from './Documentation.tsx';
+import Presentation from './Presentation.tsx';
 
-function App() {
+const TabNavigation: React.FC = () => {
   const [activeTab, setActiveTab] = useState('upload');
 
   const renderContent = () => {
-    if (activeTab === 'upload') {
-      return <UploadDrawing />;
-    } else if (activeTab === 'train') {
-      return <TrainModel />;
-    } else if (activeTab === 'documentation') {
-      return <Documentation />;
+    switch (activeTab) {
+      case 'upload':
+        return <UploadDrawing />;
+      case 'train':
+        return <TrainModel />;
+      case 'documentation':
+        return <Documentation />;
+      case 'presentation':
+        return <Presentation />;
+      default:
+        return <UploadDrawing />;
     }
   };
 
   return (
-    <div className="app">
+    <div>
       <div className="status-bar">
         <button
           className={activeTab === 'upload' ? 'active' : ''}
@@ -38,10 +43,17 @@ function App() {
         >
           Документация
         </button>
+        <button
+          className={activeTab === 'presentation' ? 'active' : ''}
+          onClick={() => setActiveTab('presentation')}
+        >
+          Презентация
+        </button>
       </div>
       <div className="content">{renderContent()}</div>
     </div>
   );
 }
 
-export default App;
+export default TabNavigation;
+

@@ -2,16 +2,23 @@ import React, { useState, useEffect } from 'react';
 import FileUpload from './FileUpload.tsx';
 import '../css/TrainModel.css';
 
-function TrainModel() {
-  const [files, setFiles] = useState([]);
-  const [uploadedFiles, setUploadedFiles] = useState([]);
-  const [trainingProgress, setTrainingProgress] = useState(0);
-  const [trainingInProgress, setTrainingInProgress] = useState(false);
-  const [showModelSelection, setShowModelSelection] = useState(false);
-  const [models, setModels] = useState([]);
-  const [selectedModel, setSelectedModel] = useState('');
+type DOMFile = File;
 
-  const handleFilesChange = (acceptedFiles) => {
+interface Model {
+  id: string;
+  name: string;
+}
+
+const TrainModel: React.FC = () => {
+  const [files, setFiles] = useState<DOMFile[]>([]);
+  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const [trainingProgress, setTrainingProgress] = useState<number>(0);
+  const [trainingInProgress, setTrainingInProgress] = useState<boolean>(false);
+  const [showModelSelection, setShowModelSelection] = useState<boolean>(false);
+  const [models, setModels] = useState<Model[]>([]);
+  const [selectedModel, setSelectedModel] = useState<string>('');
+
+  const handleFilesChange = (acceptedFiles: File[]) => {
     setFiles(acceptedFiles);
     setUploadedFiles(acceptedFiles);
   };

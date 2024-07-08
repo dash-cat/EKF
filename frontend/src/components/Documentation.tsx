@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Documentation() {
+const Documentation: React.FC = () => {
   return (
     <div className="documentation">
       <h2>Документация</h2>

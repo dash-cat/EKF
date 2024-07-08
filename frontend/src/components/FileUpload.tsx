@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import '../css/FileUpload.css';
 
@@ -8,18 +8,30 @@ interface FileUploadProps {
 }
 
 const FileUpload: React.FC<FileUploadProps> = ({ handleFilesChange, selectedFiles }) => {
-  const onDrop = useCallback((acceptedFiles) => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const onDrop = useCallback((acceptedFiles: File[]) => {
     handleFilesChange(acceptedFiles);
   }, [handleFilesChange]);
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
+    accept: {
+      'image/*': []
+    },
+    multiple: true,
   });
+
+  useEffect(() => {
+    if (selectedFiles.length === 0 && inputRef.current) {
+      inputRef.current.value = ''; // Clear the input
+    }
+  }, [selectedFiles]);
 
   return (
     <div className="file-upload-wrapper">
       <div {...getRootProps()} className="dropzone">
-        <input {...getInputProps()} />
+        <input {...getInputProps()} ref={inputRef} />
         <button className="input-file__button">Выбрать файлы</button>
       </div>
       <div className="file-list">
@@ -31,6 +43,6 @@ const FileUpload: React.FC<FileUploadProps> = ({ handleFilesChange, selectedFile
       </div>
     </div>
   );
-}
+};
 
 export default FileUpload;

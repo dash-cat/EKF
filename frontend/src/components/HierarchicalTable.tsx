@@ -130,87 +130,88 @@ const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSave }) =
           </tr>
         </thead>
         <tbody>
-          {tableData.map((item) => (
-            <React.Fragment key={item.id}>
-              <tr onClick={() => toggleRow(item.id)} className="main-row">
-                <td>
-                  <span className={`arrow ${expandedRows.includes(item.id) ? 'expanded' : 'collapsed'}`}>&#9660;</span>
-                  <input
-                    type="text"
-                    value={item.article}
-                    onChange={(e) => handleInputChange(item.id, 'article', e.target.value)}
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    value={item.name}
-                    onChange={(e) => handleInputChange(item.id, 'name', e.target.value)}
-                  />
-                </td>
-                <td>
-                  <input
-                    type="number"
-                    value={item.amount}
-                    onChange={(e) => handleInputChange(item.id, 'amount', parseInt(e.target.value))}
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    value={item.price}
-                    onChange={(e) => handleInputChange(item.id, 'price', e.target.value)}
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    value={item.totalPrice}
-                    onChange={(e) => handleInputChange(item.id, 'totalPrice', e.target.value)}
-                  />
-                </td>
-              </tr>
-              {item.subItems && expandedRows.includes(item.id) && item.subItems.map((subItem) => (
-                <tr key={subItem.id} className={`sub-row ${expandedRows.includes(item.id) ? 'expanded' : ''}`}>
-                  <td>
-                    <input
-                      type="text"
-                      value={subItem.article}
-                      onChange={(e) => handleInputChange(subItem.id, 'article', e.target.value, true, item.id)}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      value={subItem.name}
-                      onChange={(e) => handleInputChange(subItem.id, 'name', e.target.value, true, item.id)}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      value={subItem.amount}
-                      onChange={(e) => handleInputChange(subItem.id, 'amount', parseInt(e.target.value), true, item.id)}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      value={subItem.price}
-                      onChange={(e) => handleInputChange(subItem.id, 'price', e.target.value, true, item.id)}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      value={subItem.totalPrice}
-                      onChange={(e) => handleInputChange(subItem.id, 'totalPrice', e.target.value, true, item.id)}
-                    />
-                  </td>
-                </tr>
-              ))}
-            </React.Fragment>
+        {tableData.map((item) => (
+        <React.Fragment key={`main-${item.id}`}>
+          <tr key={`main-${item.id}`} onClick={() => toggleRow(item.id)} className="main-row">
+            <td>
+              <span className={`arrow ${expandedRows.includes(item.id) ? 'expanded' : 'collapsed'}`}>&#9660;</span>
+              <input
+                type="text"
+                value={item.article}
+                onChange={(e) => handleInputChange(item.id, 'article', e.target.value)}
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                value={item.name}
+                onChange={(e) => handleInputChange(item.id, 'name', e.target.value)}
+              />
+            </td>
+            <td>
+              <input
+                type="number"
+                value={item.amount}
+                onChange={(e) => handleInputChange(item.id, 'amount', parseInt(e.target.value))}
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                value={item.price}
+                onChange={(e) => handleInputChange(item.id, 'price', e.target.value)}
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                value={item.totalPrice}
+                onChange={(e) => handleInputChange(item.id, 'totalPrice', e.target.value)}
+              />
+            </td>
+          </tr>
+          {item.subItems && expandedRows.includes(item.id) && item.subItems.map((subItem) => (
+            <tr key={`sub-${subItem.id}`} className={`sub-row ${expandedRows.includes(item.id) ? 'expanded' : ''}`}>
+              <td>
+                <input
+                  type="text"
+                  value={subItem.article}
+                  onChange={(e) => handleInputChange(subItem.id, 'article', e.target.value, true, item.id)}
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  value={subItem.name}
+                  onChange={(e) => handleInputChange(subItem.id, 'name', e.target.value, true, item.id)}
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  value={subItem.amount}
+                  onChange={(e) => handleInputChange(subItem.id, 'amount', parseInt(e.target.value), true, item.id)}
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  value={subItem.price}
+                  onChange={(e) => handleInputChange(subItem.id, 'price', e.target.value, true, item.id)}
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  value={subItem.totalPrice}
+                  onChange={(e) => handleInputChange(subItem.id, 'totalPrice', e.target.value, true, item.id)}
+                />
+              </td>
+            </tr>
           ))}
+        </React.Fragment>
+      ))}
+
         </tbody>
       </table>
     </div>

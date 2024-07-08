@@ -1,0 +1,38 @@
+.presentation {
+    text-align: center;
+  }
+  
+.image-container {
+position: relative;
+width: 100%;
+max-width: 600px;
+margin: auto;
+overflow: hidden;
+}
+
+.image-container img {
+width: 100%;
+height: auto;
+transition: transform 0.5s ease-in-out;
+}
+
+.controls {
+display: flex;
+justify-content: center;
+margin-top: 10px;
+}
+
+.controls button {
+margin: 0 5px;
+padding: 10px 20px;
+background-color: #4CAF50;
+color: white;
+border: none;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+
+.controls button:hover {
+background-color: #45a049;
+}
+  

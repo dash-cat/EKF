@@ -7,16 +7,22 @@ const UploadDrawing: React.FC = () => {
   const [files, setFiles] = useState<File[]>([]);
   const [uploadProgress, setUploadProgress] = useState<number>(0);
   const [uploadedData, setUploadedData] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [uploadStatus, setUploadStatus] = useState<string>('');
 
   const handleFilesChange = (acceptedFiles: File[]) => {
     setFiles(acceptedFiles);
+    setUploadStatus(''); // Reset upload status when files are changed
   };
 
   const handleUpload = async () => {
     const formData = new FormData();
     for (const file of files) {
-      formData.append('file', file)
+      formData.append('files', file);
     }
+
+    setIsLoading(true);
+    setUploadProgress(0);
 
     try {
       const response = await fetch('http://localhost:8000/upload', {
@@ -25,14 +31,20 @@ const UploadDrawing: React.FC = () => {
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorData = await response.json();
+        throw new Error(`HTTP error! status: ${response.status}, message: ${errorData.error}`);
       }
 
       const data = await response.json();
       setUploadedData(data.filenames);
       setUploadProgress(100);
+      setUploadStatus('Upload successful!');
     } catch (error) {
       console.error('Error uploading files:', error);
+      setUploadStatus(`Error uploading files: ${error.message}`);
+    } finally {
+      setIsLoading(false);
+      setFiles([]); // Reset files state
     }
   };
 
@@ -56,7 +68,6 @@ const UploadDrawing: React.FC = () => {
 
   const handleSaveChanges = (data: any[]) => {
     console.log("Saved data:", data);
-    // You can also implement an API call to save the edited data if needed
   };
 
   return (
@@ -64,7 +75,13 @@ const UploadDrawing: React.FC = () => {
       <h2>Загрузить схему</h2>
       <div className='upload_container'>
         <FileUpload handleFilesChange={handleFilesChange} selectedFiles={files} />
-        <button className="upload-button" onClick={handleUpload}>Загрузить</button>
+        <button
+          className={`upload-button ${files.length === 0 ? 'disabled' : ''}`}
+          onClick={handleUpload}
+          disabled={files.length === 0 || isLoading}
+        >
+          {isLoading ? 'Uploading...' : 'Загрузить'}
+        </button>
       </div>
 
       {uploadProgress > 0 && uploadProgress < 100 && (
@@ -72,6 +89,12 @@ const UploadDrawing: React.FC = () => {
           <div className="progress-bar-inner" style={{ width: `${uploadProgress}%` }}>
             {Math.round(uploadProgress)}%
           </div>
+        </div>
+      )}
+
+      {uploadStatus && (
+        <div className={`upload-status ${uploadStatus.includes('Error') ? 'error' : 'success'}`}>
+          {uploadStatus}
         </div>
       )}
 

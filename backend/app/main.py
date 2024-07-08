@@ -1,7 +1,7 @@
 import time
-from typing import List
+from typing import List, Union
 import zipfile
-from fastapi import BackgroundTasks, FastAPI, UploadFile, File
+from fastapi import BackgroundTasks, FastAPI, HTTPException, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from . import models, crud
@@ -9,6 +9,7 @@ from . import utils
 from .database import engine, SessionLocal
 import pandas as pd
 import os
+import pdb
 
 app = FastAPI()
 
@@ -236,28 +237,51 @@ async def get_mock_data():
 
 @app.post("/upload")
 async def upload_drawing(files: List[UploadFile] = File(...)):
-    for file in files:
+    filenames = []
+    
+    if len(files) == 1:
+        # Обработка случая, когда передан один файл
+        file = files[0]
         content = await file.read()
-        drawing_data = utils.process_drawing(content)
-        estimate = utils.calculate_estimate(drawing_data)
-    
+        try:
+            drawing_data = utils.process_drawing(content)
+            estimate = utils.calculate_estimate(drawing_data)
+        except Exception as e:
+            return JSONResponse(content={"error": str(e)}, status_code=500)
+        
         df = pd.DataFrame(estimate)
-    
+        
         if not os.path.exists("upload"):
             os.makedirs("upload")
-    
-        # Сохранение оригинального файла
+        
         original_file_path = os.path.join("upload", file.filename)
         with open(original_file_path, "wb") as f:
             f.write(content)
+        
+        filenames.append(file.filename)
     
-        # Сохранение CSV файла с оценкой
-        csv_file_path = os.path.join("upload", f"{file.filename}_estimate.csv")
-        df.to_csv(csv_file_path, index=False)
+    else:
+        # Обработка случая, когда передано несколько файлов
+        for file in files:
+            content = await file.read()
+            try:
+                drawing_data = utils.process_drawing(content)
+                estimate = utils.calculate_estimate(drawing_data)
+            except Exception as e:
+                return JSONResponse(content={"error": str(e)}, status_code=500)
+            
+            df = pd.DataFrame(estimate)
+            
+            if not os.path.exists("upload"):
+                os.makedirs("upload")
+            
+            original_file_path = os.path.join("upload", file.filename)
+            with open(original_file_path, "wb") as f:
+                f.write(content)
+            
+            filenames.append(file.filename)
     
-    return {"filenames": [file.filename for file in files]}
-
-
+    return {"filenames": filenames}
 
 @app.post("/train_model/")
 async def train_model(background_tasks: BackgroundTasks, files: List[UploadFile] = File(...)):
