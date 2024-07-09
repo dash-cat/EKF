@@ -145,11 +145,13 @@ const UploadDrawing: React.FC = () => {
       <div className='preview-container'>
         <HierarchicalTable data={uploadedData} onSelectItem={onSelectItem} />
         <div className='spacer'/>
-        <SchematicPreview
-          imageSrc="/static/sample-schematic.jpg"
-          boxes={readBoxes()}
-          activeBoxIndex={activeBoxIndex}
-        />
+        <div className='preview-window'>
+          <SchematicPreview
+            imageSrc="/static/sample-schematic.jpg"
+            boxes={readBoxes()}
+            activeBoxIndex={activeBoxIndex}
+          />
+        </div>
       </div>
 
       {/* {

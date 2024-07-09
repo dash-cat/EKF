@@ -84,3 +84,11 @@
   display: flex;
   flex-direction: row;
 }
+
+.preview-window {
+  padding: 25px;
+  width: auto;
+  height: 450px;
+  overflow: scroll;
+  background: gray;
+}
