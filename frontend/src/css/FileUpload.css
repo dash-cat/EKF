@@ -5,7 +5,7 @@
   display: inline-block;
   border: 2px dashed #007bff;
   border-radius: 4px;
-  padding: 20px;
+
   cursor: pointer;
   text-align: center;
   background-color: #f8f9fa;
@@ -17,6 +17,11 @@
 .file-upload-wrapper.big {
   width: 700px;
   height: 60px;
+  padding: 20px;
+}
+
+.file-upload-wrapper.regular {
+  padding: 4px 80px;
 }
 
 .file-upload-wrapper input[type="file"] {
@@ -64,7 +69,6 @@
   display: inline-block;
   font-size: 16px;
   transition: background-color 0.3s ease;
-  height: 81px;
   padding: 36px;
 }
 

@@ -35,7 +35,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ handleFilesChange, selectedFile
     } else {
       return selectedFiles.map((file, index) => {
         return <div key={index} className="file-item">
-          {file.name}
+          {size == 'big' ? file.name : stringTruncatedTo(15, file.name)}
         </div>;
       })
     }
@@ -53,5 +53,13 @@ const FileUpload: React.FC<FileUploadProps> = ({ handleFilesChange, selectedFile
     </div>
   );
 };
+
+function stringTruncatedTo(length: number, input: string): string {
+  if (input.length <= length) {
+    return input;
+  } else {
+    return input.substring(0, length) + '...';
+  }
+}
 
 export default FileUpload;
