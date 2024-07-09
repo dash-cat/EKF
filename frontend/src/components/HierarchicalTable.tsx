@@ -18,7 +18,7 @@ const fields = [{
 }, {
   id: 'amount',
   type: 'number',
-  name: 'Количество, шт.',
+  name: 'Шт.',
 }, {
   id: 'price',
   type: 'text',
@@ -31,7 +31,7 @@ const fields = [{
 
 const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSelectItem }) => {
   const [tableData, setTableData] = useState<HierarchicalTableItem[]>(data);
-  const [expandedRows, setExpandedRows] = useState<number[]>([]);
+  const [expandedRows, setExpandedRows] = useState<number[]>([1]);
   const [editedData, setEditedData] = useState<HierarchicalTableItem[]>(data);
 
   useEffect(() => {

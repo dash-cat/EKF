@@ -142,13 +142,15 @@ const UploadDrawing: React.FC = () => {
         <button className="export-button" onClick={downloadExcel}>Скачать Excel</button>
       </div>
 
-      <SchematicPreview
-        imageSrc="/static/sample-schematic.jpg"
-        boxes={readBoxes()}
-        activeBoxIndex={activeBoxIndex}
-      />
-      <div className='spacer'/>
-      <HierarchicalTable data={uploadedData} onSelectItem={onSelectItem} />
+      <div className='preview-container'>
+        <SchematicPreview
+          imageSrc="/static/sample-schematic.jpg"
+          boxes={readBoxes()}
+          activeBoxIndex={activeBoxIndex}
+        />
+        <div className='spacer'/>
+        <HierarchicalTable data={uploadedData} onSelectItem={onSelectItem} />
+      </div>
 
       {/* {
         uploadedData.length > 0
