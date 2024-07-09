@@ -83,42 +83,16 @@ const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSelectIte
         {tableData.map((item) => (
         <React.Fragment key={`main-${item.id}`}>
           <tr key={`main-${item.id}`} onClick={() => toggleRow(item.id)} className="main-row">
-            <td>
-              <span className={`arrow ${expandedRows.includes(item.id) ? 'expanded' : 'collapsed'}`}>&#9660;</span>
-              <input
-                type="text"
-                value={item.article}
-                onChange={(e) => handleInputChange(item.id, 'article', e.target.value)}
-              />
-            </td>
-            <td>
-              <input
-                type="text"
-                value={item.name}
-                onChange={(e) => handleInputChange(item.id, 'name', e.target.value)}
-              />
-            </td>
-            <td>
-              <input
-                type="number"
-                value={item.amount}
-                onChange={(e) => handleInputChange(item.id, 'amount', parseInt(e.target.value))}
-              />
-            </td>
-            <td>
-              <input
-                type="text"
-                value={item.price}
-                onChange={(e) => handleInputChange(item.id, 'price', e.target.value)}
-              />
-            </td>
-            <td>
-              <input
-                type="text"
-                value={item.totalPrice}
-                onChange={(e) => handleInputChange(item.id, 'totalPrice', e.target.value)}
-              />
-            </td>
+            {fields.map((field) => (
+              // <span className={`arrow ${expandedRows.includes(item.id) ? 'expanded' : 'collapsed'}`}>&#9660;</span>
+              <td key={field.id}>
+                <input
+                  type={field.type}
+                  value={item[field.id]}
+                  onChange={(e) => handleInputChange(item.id, field.id, field.type === 'number' ? parseInt(e.target.value) : e.target.value)}
+                />
+              </td>
+            ))}
           </tr>
           {item.subItems && expandedRows.includes(item.id) && item.subItems.map((subItem) => (
             <tr
