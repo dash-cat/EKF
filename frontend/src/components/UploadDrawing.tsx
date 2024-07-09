@@ -5,9 +5,11 @@ import HierarchicalTable from './HierarchicalTable.tsx';
 import React, { useState, useEffect } from 'react';
 import SchematicPreview from './SchematicPreview.tsx';
 import { endpoints } from '../endpoints.ts';
+import HierarchicalTableItem from '../models/HierarchicalTableItem.ts';
 
 const UploadDrawing: React.FC = () => {
   const [files, setFiles] = useState<File[]>([]);
+  const [activeBoxIndex, setActiveBoxIndex] = useState<number>(-1);
   const [uploadProgress, setUploadProgress] = useState<number>(0);
   const [uploadedData, setUploadedData] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -73,6 +75,10 @@ const UploadDrawing: React.FC = () => {
     console.log("Saved data:", data);
   };
 
+  const onSelectItem = (item: HierarchicalTableItem) => {
+    setActiveBoxIndex(item.id);
+  }
+
   return (
     <div className="load_schema">
       <h2>Загрузить схему</h2>
@@ -101,9 +107,13 @@ const UploadDrawing: React.FC = () => {
         </div>
       )}
 
-      <SchematicPreview imageSrc="/static/sample-schematic.jpg" boxes={readBoxes()} />
+      <SchematicPreview
+        imageSrc="/static/sample-schematic.jpg"
+        boxes={readBoxes()}
+        activeBoxIndex={activeBoxIndex}
+      />
       <div className='spacer'/>
-      <HierarchicalTable data={uploadedData} onSave={handleSaveChanges} />
+      <HierarchicalTable data={uploadedData} onSave={handleSaveChanges} onSelectItem={onSelectItem} />
 
       {/* {
         uploadedData.length > 0

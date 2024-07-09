@@ -5,9 +5,10 @@ import '../css/HierarchicalTable.css';
 interface HierarchicalTableProps {
   data: HierarchicalTableItem[];
   onSave: (data: HierarchicalTableItem[]) => void;
+  onSelectItem: (item: HierarchicalTableItem) => void;
 }
 
-const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSave }) => {
+const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSave, onSelectItem }) => {
   const [tableData, setTableData] = useState<HierarchicalTableItem[]>(data);
   const [expandedRows, setExpandedRows] = useState<number[]>([]);
   const [editedData, setEditedData] = useState<HierarchicalTableItem[]>(data);
@@ -162,7 +163,11 @@ const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSave }) =
             </td>
           </tr>
           {item.subItems && expandedRows.includes(item.id) && item.subItems.map((subItem) => (
-            <tr key={`sub-${subItem.id}`} className={`sub-row ${expandedRows.includes(item.id) ? 'expanded' : ''}`}>
+            <tr
+              key={`sub-${subItem.id}`}
+              className={`sub-row ${expandedRows.includes(item.id) ? 'expanded' : ''}`}
+              onClick={() => onSelectItem(subItem)}
+            >
               <td>
                 <input
                   type="text"

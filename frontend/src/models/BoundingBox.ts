@@ -4,5 +4,4 @@ export default interface BoundingBox {
   y: number;
   width: number;
   height: number;
-  isActive: boolean;
 }

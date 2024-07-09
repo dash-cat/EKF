@@ -6,7 +6,11 @@ const ComponentTester: React.FC = () => {
   return (
     <div>
       <h1>Image with Bounding Boxes</h1>
-      <SchematicPreview imageSrc="/static/sample-schematic.jpg" boxes={readBoxes()} />
+      <SchematicPreview
+        imageSrc="/static/sample-schematic.jpg"
+        boxes={readBoxes()}
+        activeBoxIndex={1}
+      />
     </div>
   );
 }
