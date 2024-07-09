@@ -98,7 +98,10 @@ const UploadDrawing: React.FC = () => {
         </div>
       )}
 
-      {uploadedData.length > 0 && <HierarchicalTable data={uploadedData} onSave={handleSaveChanges} />}
+      {
+        uploadedData.length > 0
+        && <HierarchicalTable data={uploadedData} onSave={handleSaveChanges} />
+      }
     </div>
   );
 }

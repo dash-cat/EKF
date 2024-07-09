@@ -36,196 +36,164 @@ mock_data = [
         "totalPrice": "447,812.26",
         "subItems": [
             {
+                "id": 1,
+                "article": "mb24-3",
+                "name": "ЩМПг- 65.50.22 (ЩРНМ-3) IP54 EKF PROxima",
+                "amount": 1.0,
+                "price": "11 931",
+                "totalPrice": "13"
+            },
+            {
                 "id": 2,
-                "article": "tb-s-315-3p",
-                "name": "Рубильник 315A 3P без рукоятки управления TwinBlock EKF",
-                "amount": 1.000,
-                "price": "21,718.00",
-                "totalPrice": "21,718.00"
+                "article": "mb-kar-a4",
+                "name": "Карман для документации пластиковый А4 EKF",
+                "amount": 1.0,
+                "price": "436.84",
+                "totalPrice": "436.84"
             },
             {
                 "id": 3,
-                "article": "tb-315-400-fh",
-                "name": "Рукоятка управления для прямой установки на рубильники TwinBlock 315-400А EKF",
-                "amount": 1.000,
-                "price": "679.73",
-                "totalPrice": "679.73"
+                "article": "sn0-125-16-k",
+                "name": "Шина PEN \"\"ноль-земля\"\" (8x12мм) 16 отв. латунь крепеж по краям EKF",
+                "amount": 2.0,
+                "price": "420.12",
+                "totalPrice": "840.24"
             },
             {
                 "id": 4,
-                "article": "mcb47100-1-25C-pro",
-                "name": "Авт. выкл. 1P 25А (C) 10kA ВА 47-100 EKF PROxima",
-                "amount": 1.000,
-                "price": "1,128.53",
-                "totalPrice": "1,128.53"
+                "article": "ak-1-1",
+                "name": "Изолятор угловой \"\"Стойка\"\" синий EKF",
+                "amount": 2.0,
+                "price": "9.94",
+                "totalPrice": "19.88"
             },
             {
                 "id": 5,
-                "article": "mccb-33-315-TR-av",
-                "name": "AV POWER-3/3 315А 35kA TR",
-                "amount": 1.000,
-                "price": "61,025.11",
-                "totalPrice": "61,025.11"
+                "article": "ak-1-1-y",
+                "name": "Изолятор угловой \"\"Стойка\"\" желтый EKF",
+                "amount": 2.0,
+                "price": "9.94",
+                "totalPrice": "19.88"
             },
             {
                 "id": 6,
-                "article": "tte-30-300",
-                "name": "ТТЕ-30-300/5А класс точности 0,5 EKF",
-                "amount": 3.000,
-                "price": "1,228.32",
-                "totalPrice": "3,684.96"
+                "article": "an-1-01",
+                "name": "Наклейка \"\"Молния\"\" (100х100х100мм.) EKF PROxima",
+                "amount": 1.0,
+                "price": "14.16",
+                "totalPrice": "14.16"
             },
             {
                 "id": 7,
-                "article": "mccb-23-200-TR-av",
-                "name": "AV POWER-2/3 200А 35kA TR",
-                "amount": 1.000,
-                "price": "37,749.33",
-                "totalPrice": "37,749.33"
+                "article": "an-1-06",
+                "name": "Наклейка \"\"Земля\"\" (d30мм.) EKF PROxima",
+                "amount": 1.0,
+                "price": "3.4",
+                "totalPrice": "3.4"
             },
             {
                 "id": 8,
-                "article": "mccb-13-80-TR-av",
-                "name": "AV POWER-1/3 80А 35kA TR",
-                "amount": 2.000,
-                "price": "21,379.25",
-                "totalPrice": "42,758.50"
+                "article": "ahdw-211",
+                "name": "Зажим на DIN-рейку 1 винт HDW-211 EKF PROxima",
+                "amount": 2.0,
+                "price": "20.24",
+                "totalPrice": "40.48"
             },
             {
                 "id": 9,
-                "article": "mccb-13-32-TR-av",
-                "name": "AV POWER-1/3 32А 35kA TR",
-                "amount": 1.000,
-                "price": "20,185.15",
-                "totalPrice": "20,185.15"
+                "article": "kk60-60",
+                "name": "Канал кабельный перфорир. (ВхШ: 60х60мм.) EKF PROxima",
+                "amount": 1.0,
+                "price": "633.98",
+                "totalPrice": "633.98"
             },
             {
                 "id": 10,
-                "article": "mccb-13-25-TR-av",
-                "name": "AV POWER-1/3 25А 35kA TR",
-                "amount": 2.000,
-                "price": "19,713.00",
-                "totalPrice": "39,426.00"
+                "article": "kk60-40",
+                "name": "Канал кабельный перфорир. (ВхШ: 60х40мм.) EKF PROxima",
+                "amount": 1.0,
+                "price": "472.44",
+                "totalPrice": "472.44"
             },
             {
                 "id": 11,
-                "article": "mccb-13-125-TR-av",
-                "name": "AV POWER-1/3 125А 35kA TR",
-                "amount": 1.000,
-                "price": "21,870.26",
-                "totalPrice": "21,870.26"
+                "article": "rkf-37",
+                "name": "Реле контроля фаз RKF-37 EKF",
+                "amount": 1.0,
+                "price": "3 742",
+                "totalPrice": "06"
             },
             {
                 "id": 12,
-                "article": "mb15-08-00m",
-                "name": "Каркас ВРУ-1 Unit S сварной (2000х600х450) IP31 EKF PROxima",
-                "amount": 2.000,
-                "price": "43,352.91",
-                "totalPrice": "86,705.82"
+                "article": "mcb10-3-25C-av",
+                "name": "AV-10 3P 25A (C) 10kA EKF AVERES",
+                "amount": 1.0,
+                "price": "2 860",
+                "totalPrice": "63"
             },
             {
                 "id": 13,
-                "article": "mb15-04-01m",
-                "name": "Боковая панель (2шт) для ВРУ-1 и ВРУ-2 (2000хШх450) Unit S/R EKF PROxima",
-                "amount": 1.000,
-                "price": "11,066.69",
-                "totalPrice": "11,066.69"
+                "article": "M636106B",
+                "name": "Авт. выкл. 1P 6А (B) 6кА ВА 47-63N EKF PROxima",
+                "amount": 1.0,
+                "price": "380.8",
+                "totalPrice": "380.8"
             },
             {
                 "id": 14,
-                "article": "mb15-04-05p",
-                "name": "Вертикальный П-образный профиль для ВРУ Unit и ЩО-70 (2000хШхГ) EKF PROxima",
-                "amount": 4.000,
-                "price": "2,407.45",
-                "totalPrice": "9,629.80"
+                "article": "M636116B",
+                "name": "Авт. выкл. 1P 16А (B) 6кА ВА 47-63N EKF PROxima",
+                "amount": 9.0,
+                "price": "381.8",
+                "totalPrice": "3 436"
             },
             {
                 "id": 15,
-                "article": "mb15-08-01-05s",
-                "name": "Панель монтажная (480х510х2) к ВРУ Unit и ЩО-70 (Bх600хГ) EKF PROxima",
-                "amount": 1.000,
-                "price": "4,130.07",
-                "totalPrice": "4,130.07"
+                "article": "km-3-20-40",
+                "name": "КМ 20А 4NО (3 мод.) EKF",
+                "amount": 5.0,
+                "price": "3 875",
+                "totalPrice": "88"
             },
             {
                 "id": 16,
-                "article": "mb-15-rl-60n",
-                "name": "Комплект реек монтажных для литого корпуса для ВРУ Unit шириной 600мм (2шт)EKF PROxima",
-                "amount": 3.000,
-                "price": "1,376.40",
-                "totalPrice": "4,129.20"
+                "article": "ledm-ad16-g",
+                "name": "Матрица светодиодная AD16-22HS зеленый 230 В AC EKF",
+                "amount": 5.0,
+                "price": "138.78",
+                "totalPrice": "693.9"
             },
             {
                 "id": 17,
-                "article": "mb-15-rp-45n",
-                "name": "Комплект реек боковых для ВРУ Unit глубиной 450мм (4шт) EKF PROxima",
-                "amount": 3.000,
-                "price": "1,655.60",
-                "totalPrice": "4,966.80"
+                "article": "ledm-ad16-r",
+                "name": "Матрица светодиодная AD16-22HS красный 230 В AC EKF",
+                "amount": 5.0,
+                "price": "139.48",
+                "totalPrice": "697.4"
             },
             {
                 "id": 18,
-                "article": "mb15-08-02-04",
-                "name": "Цоколь к ВРУ Unit S IP31 (Вх600х450) EKF PROxima",
-                "amount": 2.000,
-                "price": "3,171.17",
-                "totalPrice": "6,342.34"
+                "article": "xb2-bd21",
+                "name": "Переключатель BD21 2P короткая ручка NO EKF",
+                "amount": 1.0,
+                "price": "371.07",
+                "totalPrice": "371.07"
             },
             {
                 "id": 19,
-                "article": "mb15-05-02",
-                "name": "Рейка монтажная (50x510) перфорированная к ВРУ Unit и ЩО-70 (Вх600хГ) EKF PROxima",
-                "amount": 6.000,
-                "price": "306.38",
-                "totalPrice": "1,838.28"
+                "article": "rp-25-3-230",
+                "name": "РП 25/3 10А 230В АС EKF",
+                "amount": 4.0,
+                "price": "629.83",
+                "totalPrice": "2 519"
             },
             {
                 "id": 20,
-                "article": "adr-60",
-                "name": "DIN-рейка перфорир. (600мм.) EKF PROxima",
-                "amount": 1.000,
-                "price": "141.13",
-                "totalPrice": "141.13"
-            },
-            {
-                "id": 21,
-                "article": "mb-kar-a4",
-                "name": "Карман для документации пластиковый А4 EKF",
-                "amount": 1.000,
-                "price": "483.10",
-                "totalPrice": "483.10"
-            },
-            {
-                "id": 22,
-                "article": "SM-4x30",
-                "name": "Шина М1T 4х30х4000 мм EKF PROxima",
-                "amount": 1.000,
-                "price": "15,925.50",
-                "totalPrice": "15,925.50"
-            },
-            {
-                "id": 23,
-                "article": "SMG-17",
-                "name": "ШМГИ 3x32x1 EKF PROxima",
-                "amount": 4.000,
-                "price": "12,684.08",
-                "totalPrice": "50,736.32"
-            },
-            {
-                "id": 24,
-                "article": "plc-sm-40",
-                "name": "Изолятор SM-40 475А 12кВ EKF",
-                "amount": 2.000,
-                "price": "113.53",
-                "totalPrice": "227.06"
-            },
-            {
-                "id": 25,
-                "article": "plc-sl-450",
-                "name": "Изолятор шинный 450А 9кВ Лесенка EKF",
-                "amount": 2.000,
-                "price": "632.29",
-                "totalPrice": "1,264.58"
+                "article": "rm-25-3",
+                "name": "РМ 25/3 EKF",
+                "amount": 3.0,
+                "price": "275.57",
+                "totalPrice": "826.71"
             }
         ]
     }
