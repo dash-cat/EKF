@@ -1,25 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import HierarchicalTableItem from '../models/HierarchicalTableItem.ts';
 import '../css/HierarchicalTable.css';
 
-interface Item {
-  id: number;
-  article: string;
-  name: string;
-  amount: number;
-  price: string;
-  totalPrice: string;
-  subItems?: Item[];
-}
-
 interface HierarchicalTableProps {
-  data: Item[];
-  onSave: (data: Item[]) => void;
+  data: HierarchicalTableItem[];
+  onSave: (data: HierarchicalTableItem[]) => void;
 }
 
 const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSave }) => {
-  const [tableData, setTableData] = useState<Item[]>(data);
+  const [tableData, setTableData] = useState<HierarchicalTableItem[]>(data);
   const [expandedRows, setExpandedRows] = useState<number[]>([]);
-  const [editedData, setEditedData] = useState<Item[]>(data);
+  const [editedData, setEditedData] = useState<HierarchicalTableItem[]>(data);
 
   useEffect(() => {
     setTableData(data);
