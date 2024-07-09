@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import FileUpload from './FileUpload.tsx';
 import '../css/TrainModel.css';
+import { endpoints } from '../endpoints.ts';
 
 type DOMFile = File;
 
@@ -29,7 +30,7 @@ const TrainModel: React.FC = () => {
       formData.append('files', file);
     }
     setTrainingInProgress(true);
-    const response = await fetch('http://localhost:8000/train_model/', {
+    const response = await fetch(endpoints.trainModels, {
       method: 'POST',
       body: formData,
     });
@@ -40,7 +41,7 @@ const TrainModel: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(async () => {
       if (trainingInProgress) {
-        const response = await fetch('http://localhost:8000/training_progress');
+        const response = await fetch(endpoints.trainingProgress);
         const data = await response.json();
         setTrainingProgress(data.progress);
 
@@ -49,7 +50,7 @@ const TrainModel: React.FC = () => {
           setTrainingInProgress(false);
           setShowModelSelection(true);
 
-          const modelsResponse = await fetch('http://localhost:8000/models/');
+          const modelsResponse = await fetch(endpoints.models);
           const modelsData = await modelsResponse.json();
           setModels(modelsData.models);
         }

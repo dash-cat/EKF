@@ -1,6 +1,5 @@
 import React from 'react';
-import BoundingBox from '../models/BoundingBox.ts';
-import { BoundingBoxDTO, readBoxes } from '../models/BoundingBoxDTO.ts';
+import { readBoxes } from '../models/BoundingBoxDTO.ts';
 import SchematicPreview from './SchematicPreview.tsx';
 
 const ComponentTester: React.FC = () => {

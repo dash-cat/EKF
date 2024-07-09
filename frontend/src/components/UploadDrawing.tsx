@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import '../css/UploadDrawing.css';
+import { readBoxes } from '../models/BoundingBoxDTO.ts';
 import FileUpload from './FileUpload.tsx';
 import HierarchicalTable from './HierarchicalTable.tsx';
-import '../css/UploadDrawing.css';
+import React, { useState, useEffect } from 'react';
+import SchematicPreview from './SchematicPreview.tsx';
+import { endpoints } from '../endpoints.ts';
 
 const UploadDrawing: React.FC = () => {
   const [files, setFiles] = useState<File[]>([]);
@@ -25,7 +28,7 @@ const UploadDrawing: React.FC = () => {
     setUploadProgress(0);
 
     try {
-      const response = await fetch('http://localhost:8000/upload', {
+      const response = await fetch(endpoints.upload, {
         method: 'POST',
         body: formData,
       });
@@ -50,7 +53,7 @@ const UploadDrawing: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:8000/mock_data');
+      const response = await fetch(endpoints.mockData);
       if (response.ok) {
         const data = await response.json();
         setUploadedData(data);
@@ -97,6 +100,8 @@ const UploadDrawing: React.FC = () => {
           {uploadStatus}
         </div>
       )}
+
+    <SchematicPreview imageSrc="/static/sample-schematic.jpg" boxes={readBoxes()} />
 
       {
         uploadedData.length > 0
