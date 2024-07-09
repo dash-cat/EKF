@@ -76,5 +76,11 @@
 }
 
 .spacer {
-  height: 650px;
+  display: inline-block;
+  width: 20px;
+}
+
+.preview-container {
+  display: flex;
+  flex-direction: row;
 }

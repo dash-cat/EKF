@@ -1,11 +1,9 @@
 .bounding-box-container {
-  position: relative;
   display: inline-block;
   transform-origin: top left;
-  transform: scale(0.35);
-  position: absolute;
-  margin-top: 20px;
-  left: 50px;
+  transform: scale(0.272);
+  margin-left: 20px;
+  box-shadow: gray 0px 1px 3px 0px;
 }
 
 .image {
@@ -14,11 +12,22 @@
 
 .bounding-box {
   position: absolute;
-  border: 2px solid red;
+  border: 8px solid rgba(255, 64, 64, 0.4);
   box-sizing: border-box;
   transition: border-color 0.3s;
+  transform: scale(1);
 }
 
 .bounding-box.active {
-  border-color: blue;
+  border-color: #4CAF50;
+  animation: oscillateScale 1s infinite;
+}
+
+@keyframes oscillateScale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
 }
