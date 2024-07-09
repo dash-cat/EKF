@@ -9,12 +9,20 @@
   cursor: pointer;
   text-align: center;
   background-color: #f8f9fa;
-  width: 700px;
   display: flex;
   flex-direction: column;
   border-radius: 4px;
+}
+
+.file-upload-wrapper.big {
+  width: 700px;
   height: 60px;
 }
+
+.file-upload-wrapper input[type="file"] {
+  display: none;
+}
+
 .dropzone {
   border: 2px dashed #4CAF50;
   border-radius: 4px;
@@ -38,10 +46,6 @@
   display: inline-block;
   font-size: 16px;
   margin-left: 30px;
-}
-
-.file-upload-wrapper input[type="file"] {
-  display: none;
 }
 
 .file-list {

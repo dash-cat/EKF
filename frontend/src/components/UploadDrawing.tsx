@@ -115,7 +115,7 @@ const UploadDrawing: React.FC = () => {
     <div className="load_schema">
       <h2>Загрузить схему</h2>
       <div className='upload_container'>
-        <FileUpload handleFilesChange={handleFilesChange} selectedFiles={files} />
+        <FileUpload handleFilesChange={handleFilesChange} selectedFiles={files} size='regular' />
         <button
           className={`upload-button ${files.length === 0 ? 'disabled' : ''}`}
           onClick={handleUpload}

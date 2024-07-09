@@ -5,9 +5,10 @@ import '../css/FileUpload.css';
 interface FileUploadProps {
   handleFilesChange: (files: File[]) => void;
   selectedFiles: File[];
+  size: 'regular' | 'big';
 }
 
-const FileUpload: React.FC<FileUploadProps> = ({ handleFilesChange, selectedFiles }) => {
+const FileUpload: React.FC<FileUploadProps> = ({ handleFilesChange, selectedFiles, size }) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
@@ -29,7 +30,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ handleFilesChange, selectedFile
   }, [selectedFiles]);
 
   return (
-    <div className="file-upload-wrapper">
+    <div className={`file-upload-wrapper ${size == 'big' ? 'big' : 'regular' }`}>
       <div {...getRootProps()} className="dropzone">
         <input {...getInputProps()} ref={inputRef} />
         <button className="input-file__button">Выбрать файлы</button>

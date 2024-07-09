@@ -63,7 +63,7 @@ const TrainModel: React.FC = () => {
   return (
     <div className='window-train'>
       <h2>Тренировка модели</h2>
-      <FileUpload handleFilesChange={handleFilesChange} selectedFiles={files} />
+      <FileUpload handleFilesChange={handleFilesChange} selectedFiles={files} size='big' />
       
       {uploadedFiles && uploadedFiles.length > 0 && (
         <div className='upload-container'>
