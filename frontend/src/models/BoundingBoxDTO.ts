@@ -30,6 +30,6 @@ export function readBoxes(): BoundingBox[] {
     y: dto.y,
     width: dto.width,
     height: dto.height,
-    isActive: dto.id == 1,
+    isActive: false,
   }));
 }
