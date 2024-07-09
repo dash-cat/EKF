@@ -101,12 +101,14 @@ const UploadDrawing: React.FC = () => {
         </div>
       )}
 
-    <SchematicPreview imageSrc="/static/sample-schematic.jpg" boxes={readBoxes()} />
+      <SchematicPreview imageSrc="/static/sample-schematic.jpg" boxes={readBoxes()} />
+      <div className='spacer'/>
+      <HierarchicalTable data={uploadedData} onSave={handleSaveChanges} />
 
-      {
+      {/* {
         uploadedData.length > 0
         && <HierarchicalTable data={uploadedData} onSave={handleSaveChanges} />
-      }
+      } */}
     </div>
   );
 }

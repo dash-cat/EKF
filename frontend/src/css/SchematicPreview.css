@@ -3,6 +3,9 @@
   display: inline-block;
   transform-origin: top left;
   transform: scale(0.35);
+  position: absolute;
+  margin-top: 20px;
+  left: 50px;
 }
 
 .image {
