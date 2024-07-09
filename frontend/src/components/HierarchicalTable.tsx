@@ -7,7 +7,7 @@ interface HierarchicalTableProps {
   onSelectItem: (item: HierarchicalTableItem) => void;
 }
 
-const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSave, onSelectItem }) => {
+const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSelectItem }) => {
   const [tableData, setTableData] = useState<HierarchicalTableItem[]>(data);
   const [expandedRows, setExpandedRows] = useState<number[]>([]);
   const [editedData, setEditedData] = useState<HierarchicalTableItem[]>(data);
