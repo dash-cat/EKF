@@ -1,13 +1,16 @@
 .data-table {
-  width: 100%;
   border-collapse: collapse;
 }
 
 .data-table th,
 .data-table td {
   border: 1px solid #ccc;
-  padding: 8px;
   text-align: left;
+}
+
+.data-table td input {
+  border: none;
+  background: none;
 }
 
 .main-row {

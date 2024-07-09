@@ -115,7 +115,7 @@ const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSelectIte
               onClick={() => onSelectItem(subItem)}
             >
               {fields.map((field) => (
-                <td key={field.name}>
+                <td key={field.name} className="table-row">
                   <input
                     type={field.type}
                     value={subItem[field.name]}
