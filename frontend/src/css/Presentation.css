@@ -48,3 +48,17 @@
     transform: translateY(0);
   }
 }
+
+.presentation pre {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  width: auto;
+  font-size: 200%;
+  text-align: left;
+  padding: 3rem;
+}
+
+.presentation pre span {
+  color: rgb(88, 83, 83);
+}
