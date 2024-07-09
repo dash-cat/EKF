@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useEffect } from 'react';
+import React, { useCallback, useRef, useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import '../css/FileUpload.css';
 
@@ -29,19 +29,27 @@ const FileUpload: React.FC<FileUploadProps> = ({ handleFilesChange, selectedFile
     }
   }, [selectedFiles]);
 
+  const buttonContent = () => {
+    if (selectedFiles.length === 0) {
+      return <span>Выбрать файлы</span>;
+    } else {
+      return selectedFiles.map((file, index) => {
+        return <div key={index} className="file-item">
+          {file.name}
+        </div>;
+      })
+    }
+  };
+
   return (
     <div className={`file-upload-wrapper ${size == 'big' ? 'big' : 'regular' }`}>
       <div {...getRootProps()} className="dropzone">
         <input {...getInputProps()} ref={inputRef} />
-        <button className="input-file__button">Выбрать файлы</button>
+        <button className="input-file__button">
+          {buttonContent()}
+        </button>
       </div>
-      <div className="file-list">
-        {selectedFiles.map((file, index) => (
-          <div key={index} className="file-item">
-            {file.name}
-          </div>
-        ))}
-      </div>
+
     </div>
   );
 };

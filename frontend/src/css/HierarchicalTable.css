@@ -53,13 +53,6 @@
   flex-direction: column;
 }
 
-.table-button {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin: 10px;
-}
-
 .arrow {
   cursor: pointer;
   display: inline-block;

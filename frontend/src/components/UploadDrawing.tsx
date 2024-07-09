@@ -115,14 +115,7 @@ const UploadDrawing: React.FC = () => {
     <div className="load_schema">
       <h2>Загрузить схему</h2>
       <div className='upload_container'>
-        <FileUpload handleFilesChange={handleFilesChange} selectedFiles={files} size='regular' />
-        <button
-          className={`upload-button ${files.length === 0 ? 'disabled' : ''}`}
-          onClick={handleUpload}
-          disabled={files.length === 0 || isLoading}
-        >
-          {isLoading ? 'Uploading...' : 'Загрузить'}
-        </button>
+
       </div>
 
       {uploadProgress > 0 && uploadProgress < 100 && (
@@ -138,10 +131,20 @@ const UploadDrawing: React.FC = () => {
           {uploadStatus}
         </div>
       )}
+
       <div className='table-button'>
         <button className="save-button" onClick={() => handleSaveChanges([])}>Сохранить изменения</button>
         <button className="export-button" onClick={downloadCSV}>Скачать CSV</button>
         <button className="export-button" onClick={downloadExcel}>Скачать Excel</button>
+        <div style={{ flexGrow: 1 }} />
+        <FileUpload handleFilesChange={handleFilesChange} selectedFiles={files} size='regular' />
+        <button
+          className={`upload-button ${files.length === 0 ? 'disabled' : ''}`}
+          onClick={handleUpload}
+          disabled={files.length === 0 || isLoading}
+        >
+          {isLoading ? 'Uploading...' : 'Загрузить'}
+        </button>
       </div>
 
       <div className='preview-container'>
