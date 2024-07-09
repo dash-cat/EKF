@@ -5,8 +5,17 @@
 .data-table th,
 .data-table td {
   border: 1px solid #ccc;
+}
+
+.data-table td {
   text-align: left;
 }
+
+.data-table th {
+  text-align: center;
+  padding: 8px;
+}
+
 
 .data-table td input {
   border: none;

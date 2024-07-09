@@ -7,6 +7,28 @@ interface HierarchicalTableProps {
   onSelectItem: (item: HierarchicalTableItem) => void;
 }
 
+const fields = [{
+  id: 'article',
+  type: 'text',
+  name: 'Артикул',
+}, {
+  id: 'name',
+  type: 'text',
+  name: 'Наименование',
+}, {
+  id: 'amount',
+  type: 'number',
+  name: 'Количество, шт.',
+}, {
+  id: 'price',
+  type: 'text',
+  name: 'Цена, руб.',
+}, {
+  id: 'totalPrice',
+  type: 'text',
+  name: 'Сумма, руб.',
+}];
+
 const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSelectItem }) => {
   const [tableData, setTableData] = useState<HierarchicalTableItem[]>(data);
   const [expandedRows, setExpandedRows] = useState<number[]>([]);
@@ -47,24 +69,14 @@ const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSelectIte
     );
   };
 
-  const fields = [
-    { name: 'article', type: 'text' },
-    { name: 'name', type: 'text' },
-    { name: 'amount', type: 'number' },
-    { name: 'price', type: 'text' },
-    { name: 'totalPrice', type: 'text' }
-  ];
-
   return (
     <div>
       <table className="data-table">
         <thead>
           <tr>
-            <th>Артикул</th>
-            <th>Наименование</th>
-            <th>Количество</th>
-            <th>Цена</th>
-            <th>Сумма</th>
+            {fields.map((field) => (
+              <th>{field.name}</th>
+            ))}
           </tr>
         </thead>
         <tbody>
@@ -115,13 +127,13 @@ const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSelectIte
               onClick={() => onSelectItem(subItem)}
             >
               {fields.map((field) => (
-                <td key={field.name} className="table-row">
+                <td key={field.id} className="table-row">
                   <input
                     type={field.type}
-                    value={subItem[field.name]}
+                    value={subItem[field.id]}
                     onChange={(e) => handleInputChange(
                       subItem.id,
-                      field.name,
+                      field.id,
                       (field.type === 'number'
                        ? parseInt(e.target.value)
                        : e.target.value),
