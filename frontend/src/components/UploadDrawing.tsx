@@ -72,12 +72,42 @@ const UploadDrawing: React.FC = () => {
   }, []);
 
   const handleSaveChanges = (data: any[]) => {
-    console.log("Saved data:", data);
+    throw new Error("Not implemented");
   };
 
   const onSelectItem = (item: HierarchicalTableItem) => {
     setActiveBoxIndex(item.id);
   }
+
+
+  const downloadCSV = () => {
+    const rows = [
+      ["Артикул", "Наименование", "Количество", "Цена", "Сумма"],
+      ...uploadedData.map(item => [
+        item.article,
+        item.name,
+        item.amount,
+        item.price,
+        item.totalPrice
+      ])
+    ];
+
+    const csvContent = "data:text/csv;charset=utf-8," 
+      + rows.map(e => e.join(",")).join("\n");
+
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "table_data.csv");
+    document.body.appendChild(link);
+
+    link.click();
+  };
+
+  const downloadExcel = () => {
+    throw new Error("Not implemented");
+  };
+
 
   return (
     <div className="load_schema">
@@ -106,6 +136,11 @@ const UploadDrawing: React.FC = () => {
           {uploadStatus}
         </div>
       )}
+      <div className='table-button'>
+        <button className="save-button" onClick={() => handleSaveChanges([])}>Сохранить изменения</button>
+        <button className="export-button" onClick={downloadCSV}>Скачать CSV</button>
+        <button className="export-button" onClick={downloadExcel}>Скачать Excel</button>
+      </div>
 
       <SchematicPreview
         imageSrc="/static/sample-schematic.jpg"
@@ -113,7 +148,7 @@ const UploadDrawing: React.FC = () => {
         activeBoxIndex={activeBoxIndex}
       />
       <div className='spacer'/>
-      <HierarchicalTable data={uploadedData} onSave={handleSaveChanges} onSelectItem={onSelectItem} />
+      <HierarchicalTable data={uploadedData} onSelectItem={onSelectItem} />
 
       {/* {
         uploadedData.length > 0

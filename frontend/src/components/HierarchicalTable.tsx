@@ -4,7 +4,6 @@ import '../css/HierarchicalTable.css';
 
 interface HierarchicalTableProps {
   data: HierarchicalTableItem[];
-  onSave: (data: HierarchicalTableItem[]) => void;
   onSelectItem: (item: HierarchicalTableItem) => void;
 }
 
@@ -42,75 +41,8 @@ const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSave, onS
     );
   };
 
-  const handleSave = () => {
-    onSave(tableData);
-  };
-
-  const downloadCSV = () => {
-    const rows = [
-      ["Артикул", "Наименование", "Количество", "Цена", "Сумма"],
-      ...tableData.map(item => [
-        item.article,
-        item.name,
-        item.amount,
-        item.price,
-        item.totalPrice
-      ])
-    ];
-
-    const csvContent = "data:text/csv;charset=utf-8," 
-      + rows.map(e => e.join(",")).join("\n");
-
-    const encodedUri = encodeURI(csvContent);
-    const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "table_data.csv");
-    document.body.appendChild(link);
-
-    link.click();
-  };
-
-  const downloadXML = () => {
-    let xmlContent = '<?xml version="1.0" encoding="UTF-8"?>\n<items>\n';
-    
-    tableData.forEach(item => {
-      xmlContent += `  <item>\n`;
-      xmlContent += `    <article>${item.article}</article>\n`;
-      xmlContent += `    <name>${item.name}</name>\n`;
-      xmlContent += `    <amount>${item.amount}</amount>\n`;
-      xmlContent += `    <price>${item.price}</price>\n`;
-      xmlContent += `    <totalPrice>${item.totalPrice}</totalPrice>\n`;
-      if (item.subItems) {
-        item.subItems.forEach(subItem => {
-          xmlContent += `    <subItem>\n`;
-          xmlContent += `      <article>${subItem.article}</article>\n`;
-          xmlContent += `      <name>${subItem.name}</name>\n`;
-          xmlContent += `      <amount>${subItem.amount}</amount>\n`;
-          xmlContent += `      <price>${subItem.price}</price>\n`;
-          xmlContent += `      <totalPrice>${subItem.totalPrice}</totalPrice>\n`;
-          xmlContent += `    </subItem>\n`;
-        });
-      }
-      xmlContent += `  </item>\n`;
-    });
-
-    xmlContent += '</items>';
-
-    const blob = new Blob([xmlContent], { type: 'application/xml' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'table_data.xml';
-    document.body.appendChild(link);
-    link.click();
-  };
-
   return (
     <div>
-        <div className='table-button'>
-        <button className="save-button" onClick={handleSave}>Сохранить изменения</button>
-        <button className="export-button" onClick={downloadCSV}>Выгрузить в CSV</button>
-        <button className="export-button" onClick={downloadXML}>Выгрузить в XML</button>
-    </div>
       <table className="data-table">
         <thead>
           <tr>
