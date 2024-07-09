@@ -1,5 +1,6 @@
 .data-table {
   border-collapse: collapse;
+  box-shadow: gray 0px 1px 3px 0px;
 }
 
 .data-table th,

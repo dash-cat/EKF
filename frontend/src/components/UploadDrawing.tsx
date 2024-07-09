@@ -77,7 +77,9 @@ const UploadDrawing: React.FC = () => {
 
   const onSelectItem = (item: HierarchicalTableItem) => {
     setActiveBoxIndex(item.id);
-    document.querySelector('.bounding-box.active')?.scrollIntoView();
+    setTimeout(() => {
+      document.querySelector('.bounding-box.active')?.scrollIntoView({ block: "center", inline: "center" });
+    }, 0);
   }
 
   const downloadCSV = () => {
