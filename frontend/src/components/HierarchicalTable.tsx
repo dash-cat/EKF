@@ -22,7 +22,13 @@ const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSelectIte
     );
   };
 
-  const handleInputChange = (id: number, field: string, value: any, isSubItem = false, parentId: number | null = null) => {
+  const handleInputChange = (
+    id: number,
+    field: string,
+    value: any,
+    isSubItem = false,
+    parentId: number | null = null
+  ) => {
     setTableData((prevData) =>
       prevData.map((item) => {
         if (item.id === id && !isSubItem) {
@@ -40,6 +46,14 @@ const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSelectIte
       })
     );
   };
+
+  const fields = [
+    { name: 'article', type: 'text' },
+    { name: 'name', type: 'text' },
+    { name: 'amount', type: 'number' },
+    { name: 'price', type: 'text' },
+    { name: 'totalPrice', type: 'text' }
+  ];
 
   return (
     <div>
@@ -100,41 +114,23 @@ const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSelectIte
               className={`sub-row ${expandedRows.includes(item.id) ? 'expanded' : ''}`}
               onClick={() => onSelectItem(subItem)}
             >
-              <td>
-                <input
-                  type="text"
-                  value={subItem.article}
-                  onChange={(e) => handleInputChange(subItem.id, 'article', e.target.value, true, item.id)}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  value={subItem.name}
-                  onChange={(e) => handleInputChange(subItem.id, 'name', e.target.value, true, item.id)}
-                />
-              </td>
-              <td>
-                <input
-                  type="number"
-                  value={subItem.amount}
-                  onChange={(e) => handleInputChange(subItem.id, 'amount', parseInt(e.target.value), true, item.id)}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  value={subItem.price}
-                  onChange={(e) => handleInputChange(subItem.id, 'price', e.target.value, true, item.id)}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  value={subItem.totalPrice}
-                  onChange={(e) => handleInputChange(subItem.id, 'totalPrice', e.target.value, true, item.id)}
-                />
-              </td>
+              {fields.map((field) => (
+                <td key={field.name}>
+                  <input
+                    type={field.type}
+                    value={subItem[field.name]}
+                    onChange={(e) => handleInputChange(
+                      subItem.id,
+                      field.name,
+                      (field.type === 'number'
+                       ? parseInt(e.target.value)
+                       : e.target.value),
+                      true,
+                      item.id
+                    )}
+                  />
+                </td>
+              ))}
             </tr>
           ))}
         </React.Fragment>
