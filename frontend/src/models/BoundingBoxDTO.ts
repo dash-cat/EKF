@@ -1,8 +1,11 @@
+import json from './boxes.json';
+import BoundingBox from './BoundingBox.ts';
+
 interface BoundingBoxDTOAttributes {
   [key: string]: string | null;
 }
 
-export default interface BoundingBoxDTO {
+export interface BoundingBoxDTO {
   id: number;
   label: string;
   source: string;
@@ -17,4 +20,16 @@ export default interface BoundingBoxDTO {
   height: number;
   z_order: number;
   attributes: BoundingBoxDTOAttributes;
+}
+
+export function readBoxes(): BoundingBox[] {
+  const dtoRoot: BoundingBoxDTO[] = json as BoundingBoxDTO[];
+  return dtoRoot.map((dto: BoundingBoxDTO) => ({
+    id: dto.id,
+    x: dto.x,
+    y: dto.y,
+    width: dto.width,
+    height: dto.height,
+    isActive: dto.id == 1,
+  }));
 }
