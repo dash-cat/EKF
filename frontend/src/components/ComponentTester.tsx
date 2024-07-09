@@ -1,25 +1,44 @@
 import React from 'react';
 import BoundingBox from '../models/BoundingBox.ts';
 import SchematicPreview from './SchematicPreview.tsx';
-import json from './annotations.json';
+import json from './boxes.json';
+
+interface BoundingBoxDTOAttributes {
+  [key: string]: string | null;
+}
+
+interface BoundingBoxDTO {
+  id: number;
+  label: string;
+  source: string;
+  occluded: number;
+  xtl: number;
+  ytl: number;
+  xbr: number;
+  ybr: number;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  z_order: number;
+  attributes: BoundingBoxDTOAttributes;
+}
 
 const ComponentTester: React.FC = () => {
-  const image = json.images.find((img: any) => img.file_name === '2.jpg');
-  const imageId = image ? image.id : null;
-
-  const boxes: BoundingBox[] = json.annotations.map((annotation: any) => ({
-    id: annotation.id,
-    x: annotation.bbox[0],
-    y: annotation.bbox[1],
-    width: annotation.bbox[2],
-    height: annotation.bbox[3],
-    isActive: annotation.id == 19,
+  const dtoRoot: BoundingBoxDTO[] = json as BoundingBoxDTO[];
+  const boxes: BoundingBox[] = dtoRoot.map((dto: BoundingBoxDTO) => ({
+    id: dto.id,
+    x: dto.x,
+    y: dto.y,
+    width: dto.width,
+    height: dto.height,
+    isActive: dto.id == 1,
   }));
 
   return (
     <div>
       <h1>Image with Bounding Boxes</h1>
-      <SchematicPreview imageSrc="/static/2.jpg" boxes={boxes} />
+      <SchematicPreview imageSrc="/static/sample-schematic.jpg" boxes={boxes} />
     </div>
   );
 }

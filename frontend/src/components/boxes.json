@@ -1,0 +1,574 @@
+[
+  {
+    "label": "QF",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 1751.82,
+    "ytl": 308.88,
+    "xbr": 1783.53,
+    "ybr": 357.04,
+    "x": 1751.82,
+    "y": 308.88,
+    "width": 31.710000000000036,
+    "height": 48.160000000000025,
+    "z_order": 0,
+    "attributes": {
+      "Полюсность": "1",
+      "Description": null
+    }
+  },
+  {
+    "label": "KM",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 1076.9,
+    "ytl": 535.09,
+    "xbr": 1121.1,
+    "ybr": 577.2,
+    "x": 1076.9,
+    "y": 535.09,
+    "width": 44.19999999999982,
+    "height": 42.110000000000014,
+    "z_order": 0,
+    "attributes": {
+      "Description": null
+    }
+  },
+  {
+    "label": "QF",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 565.16,
+    "ytl": 314.63,
+    "xbr": 598.63,
+    "ybr": 366.31,
+    "x": 565.16,
+    "y": 314.63,
+    "width": 33.47000000000003,
+    "height": 51.68000000000001,
+    "z_order": 0,
+    "attributes": {
+      "Полюсность": "3",
+      "Description": null
+    }
+  },
+  {
+    "label": "QF",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 2268.52,
+    "ytl": 311.42,
+    "xbr": 2300.24,
+    "ybr": 359.58,
+    "x": 2268.52,
+    "y": 311.42,
+    "width": 31.7199999999998,
+    "height": 48.15999999999997,
+    "z_order": 0,
+    "attributes": {
+      "Полюсность": "1",
+      "Description": null
+    }
+  },
+  {
+    "label": "QF",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 2094.32,
+    "ytl": 309.73,
+    "xbr": 2126.03,
+    "ybr": 357.89,
+    "x": 2094.32,
+    "y": 309.73,
+    "width": 31.710000000000036,
+    "height": 48.15999999999997,
+    "z_order": 0,
+    "attributes": {
+      "Полюсность": "1",
+      "Description": null
+    }
+  },
+  {
+    "label": "KM",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 1247.44,
+    "ytl": 535.61,
+    "xbr": 1291.64,
+    "ybr": 577.72,
+    "x": 1247.44,
+    "y": 535.61,
+    "width": 44.200000000000045,
+    "height": 42.110000000000014,
+    "z_order": 0,
+    "attributes": {
+      "Description": null
+    }
+  },
+  {
+    "label": "Текст",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 999.99,
+    "ytl": 389.3,
+    "xbr": 1083.86,
+    "ybr": 459.33,
+    "x": 999.99,
+    "y": 389.3,
+    "width": 83.86999999999989,
+    "height": 70.02999999999997,
+    "z_order": 0,
+    "attributes": {
+      "Description": null
+    }
+  },
+  {
+    "label": "Текст",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 506.9,
+    "ytl": 387.3,
+    "xbr": 590.77,
+    "ybr": 457.57,
+    "x": 506.9,
+    "y": 387.3,
+    "width": 83.87,
+    "height": 70.26999999999998,
+    "z_order": 0,
+    "attributes": {
+      "Description": null
+    }
+  },
+  {
+    "label": "Текст",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 1504.41,
+    "ytl": 387.9,
+    "xbr": 1597.06,
+    "ybr": 457.13,
+    "x": 1504.41,
+    "y": 387.9,
+    "width": 92.64999999999986,
+    "height": 69.23000000000002,
+    "z_order": 0,
+    "attributes": {
+      "Description": null
+    }
+  },
+  {
+    "label": "KM",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 905.84,
+    "ytl": 534.04,
+    "xbr": 950.03,
+    "ybr": 576.16,
+    "x": 905.84,
+    "y": 534.04,
+    "width": 44.18999999999994,
+    "height": 42.120000000000005,
+    "z_order": 0,
+    "attributes": {
+      "Description": null
+    }
+  },
+  {
+    "label": "Текст",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 828.04,
+    "ytl": 391.0,
+    "xbr": 911.9,
+    "ybr": 459.33,
+    "x": 828.04,
+    "y": 391.0,
+    "width": 83.86000000000001,
+    "height": 68.32999999999998,
+    "z_order": 0,
+    "attributes": {
+      "Description": null
+    }
+  },
+  {
+    "label": "Текст",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 1147.34,
+    "ytl": 504.2,
+    "xbr": 1250.92,
+    "ybr": 599.66,
+    "x": 1147.34,
+    "y": 504.2,
+    "width": 103.58000000000015,
+    "height": 95.45999999999998,
+    "z_order": 0,
+    "attributes": {
+      "Description": null
+    }
+  },
+  {
+    "label": "Текст",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 809.17,
+    "ytl": 506.07,
+    "xbr": 912.75,
+    "ybr": 601.53,
+    "x": 809.17,
+    "y": 506.07,
+    "width": 103.58000000000004,
+    "height": 95.45999999999998,
+    "z_order": 0,
+    "attributes": {
+      "Description": null
+    }
+  },
+  {
+    "label": "KM",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 1417.22,
+    "ytl": 535.34,
+    "xbr": 1461.41,
+    "ybr": 577.46,
+    "x": 1417.22,
+    "y": 535.34,
+    "width": 44.190000000000055,
+    "height": 42.120000000000005,
+    "z_order": 0,
+    "attributes": {
+      "Description": null
+    }
+  },
+  {
+    "label": "Текст",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 645.08,
+    "ytl": 503.26,
+    "xbr": 748.65,
+    "ybr": 598.72,
+    "x": 645.08,
+    "y": 503.26,
+    "width": 103.56999999999994,
+    "height": 95.46000000000004,
+    "z_order": 0,
+    "attributes": {
+      "Description": null
+    }
+  },
+  {
+    "label": "QF",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 1925.18,
+    "ytl": 308.88,
+    "xbr": 1956.89,
+    "ybr": 357.04,
+    "x": 1925.18,
+    "y": 308.88,
+    "width": 31.710000000000036,
+    "height": 48.160000000000025,
+    "z_order": 0,
+    "attributes": {
+      "Полюсность": "1",
+      "Description": null
+    }
+  },
+  {
+    "label": "Шкаф",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 528.11,
+    "ytl": 166.23,
+    "xbr": 729.9,
+    "ybr": 191.8,
+    "x": 528.11,
+    "y": 166.23,
+    "width": 201.78999999999996,
+    "height": 25.57000000000002,
+    "z_order": 0,
+    "attributes": {
+      "Description": null
+    }
+  },
+  {
+    "label": "QF",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 740.76,
+    "ytl": 310.52,
+    "xbr": 772.47,
+    "ybr": 358.67,
+    "x": 740.76,
+    "y": 310.52,
+    "width": 31.710000000000036,
+    "height": 48.150000000000034,
+    "z_order": 0,
+    "attributes": {
+      "Полюсность": "1",
+      "Description": null
+    }
+  },
+  {
+    "label": "QF",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 1584.37,
+    "ytl": 311.42,
+    "xbr": 1616.08,
+    "ybr": 359.58,
+    "x": 1584.37,
+    "y": 311.42,
+    "width": 31.710000000000036,
+    "height": 48.15999999999997,
+    "z_order": 0,
+    "attributes": {
+      "Полюсность": "1",
+      "Description": null
+    }
+  },
+  {
+    "label": "Текст",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 1322.05,
+    "ytl": 504.2,
+    "xbr": 1425.62,
+    "ybr": 599.66,
+    "x": 1322.05,
+    "y": 504.2,
+    "width": 103.56999999999994,
+    "height": 95.45999999999998,
+    "z_order": 0,
+    "attributes": {
+      "Description": null
+    }
+  },
+  {
+    "label": "Текст",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 2014.41,
+    "ytl": 387.8,
+    "xbr": 2107.06,
+    "ybr": 452.74,
+    "x": 2014.41,
+    "y": 387.8,
+    "width": 92.64999999999986,
+    "height": 64.94,
+    "z_order": 0,
+    "attributes": {
+      "Description": null
+    }
+  },
+  {
+    "label": "Текст",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 980.75,
+    "ytl": 506.69,
+    "xbr": 1084.33,
+    "ybr": 602.15,
+    "x": 980.75,
+    "y": 506.69,
+    "width": 103.57999999999993,
+    "height": 95.45999999999998,
+    "z_order": 0,
+    "attributes": {
+      "Description": null
+    }
+  },
+  {
+    "label": "QF",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 1416.93,
+    "ytl": 312.27,
+    "xbr": 1448.64,
+    "ybr": 360.42,
+    "x": 1416.93,
+    "y": 312.27,
+    "width": 31.710000000000036,
+    "height": 48.150000000000034,
+    "z_order": 0,
+    "attributes": {
+      "Полюсность": "1",
+      "Description": null
+    }
+  },
+  {
+    "label": "KM",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 741.53,
+    "ytl": 535.08,
+    "xbr": 785.73,
+    "ybr": 577.19,
+    "x": 741.53,
+    "y": 535.08,
+    "width": 44.200000000000045,
+    "height": 42.110000000000014,
+    "z_order": 0,
+    "attributes": {
+      "Description": null
+    }
+  },
+  {
+    "label": "Текст",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 665.25,
+    "ytl": 390.1,
+    "xbr": 749.11,
+    "ybr": 458.63,
+    "x": 665.25,
+    "y": 390.1,
+    "width": 83.86000000000001,
+    "height": 68.52999999999997,
+    "z_order": 0,
+    "attributes": {
+      "Description": null
+    }
+  },
+  {
+    "label": "QF",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 1244.04,
+    "ytl": 311.68,
+    "xbr": 1275.75,
+    "ybr": 359.83,
+    "x": 1244.04,
+    "y": 311.68,
+    "width": 31.710000000000036,
+    "height": 48.14999999999998,
+    "z_order": 0,
+    "attributes": {
+      "Полюсность": "1",
+      "Description": null
+    }
+  },
+  {
+    "label": "Текст",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 1337.81,
+    "ytl": 389.8,
+    "xbr": 1430.46,
+    "ybr": 455.67,
+    "x": 1337.81,
+    "y": 389.8,
+    "width": 92.65000000000009,
+    "height": 65.87,
+    "z_order": 0,
+    "attributes": {
+      "Description": null
+    }
+  },
+  {
+    "label": "Текст",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 1846.36,
+    "ytl": 387.3,
+    "xbr": 1939.01,
+    "ybr": 455.67,
+    "x": 1846.36,
+    "y": 387.3,
+    "width": 92.65000000000009,
+    "height": 68.37,
+    "z_order": 0,
+    "attributes": {
+      "Description": null
+    }
+  },
+  {
+    "label": "QF",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 1072.55,
+    "ytl": 312.85,
+    "xbr": 1104.26,
+    "ybr": 361.01,
+    "x": 1072.55,
+    "y": 312.85,
+    "width": 31.710000000000036,
+    "height": 48.15999999999997,
+    "z_order": 0,
+    "attributes": {
+      "Полюсность": "1",
+      "Description": null
+    }
+  },
+  {
+    "label": "Текст",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 1166.85,
+    "ytl": 390.2,
+    "xbr": 1259.5,
+    "ybr": 458.59,
+    "x": 1166.85,
+    "y": 390.2,
+    "width": 92.65000000000009,
+    "height": 68.38999999999999,
+    "z_order": 0,
+    "attributes": {
+      "Description": null
+    }
+  },
+  {
+    "label": "Текст",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 1672.46,
+    "ytl": 387.7,
+    "xbr": 1765.11,
+    "ybr": 458.59,
+    "x": 1672.46,
+    "y": 387.7,
+    "width": 92.64999999999986,
+    "height": 70.88999999999999,
+    "z_order": 0,
+    "attributes": {
+      "Description": null
+    }
+  },
+  {
+    "label": "QF",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 902.83,
+    "ytl": 309.33,
+    "xbr": 934.54,
+    "ybr": 357.49,
+    "x": 902.83,
+    "y": 309.33,
+    "width": 31.709999999999923,
+    "height": 48.160000000000025,
+    "z_order": 0,
+    "attributes": {
+      "Полюсность": "1",
+      "Description": null
+    }
+  },
+  {
+    "label": "Текст",
+    "source": "manual",
+    "occluded": 0,
+    "xtl": 2185.39,
+    "ytl": 387.9,
+    "xbr": 2278.04,
+    "ybr": 457.13,
+    "x": 2185.39,
+    "y": 387.9,
+    "width": 92.65000000000009,
+    "height": 69.23000000000002,
+    "z_order": 0,
+    "attributes": {
+      "Description": null
+    }
+  }
+]
