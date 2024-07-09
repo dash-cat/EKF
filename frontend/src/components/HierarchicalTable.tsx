@@ -7,10 +7,20 @@ interface HierarchicalTableProps {
   onSelectItem: (item: HierarchicalTableItem) => void;
 }
 
-const fields = [{
+interface TableColumn {
+  id: string;
+  type: 'text' | 'number';
+  name: string;
+  width?: number;
+}
+
+type StyleForColumnGetter = (column: TableColumn) => object;
+
+const columns: TableColumn[] = [{
   id: 'article',
   type: 'text',
   name: 'Артикул',
+  width: 100,
 }, {
   id: 'name',
   type: 'text',
@@ -19,14 +29,17 @@ const fields = [{
   id: 'amount',
   type: 'number',
   name: 'Шт.',
+  width: 30,
 }, {
   id: 'price',
   type: 'text',
   name: 'Цена, руб.',
+  width: 100,
 }, {
   id: 'totalPrice',
   type: 'text',
   name: 'Сумма, руб.',
+  width: 120,
 }];
 
 const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSelectItem }) => {
@@ -69,13 +82,24 @@ const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSelectIte
     );
   };
 
+  const styleForColumn: StyleForColumnGetter = (column: TableColumn) => {
+    return { width: column.width ?? 'auto' }
+  }
+
   return (
     <div>
       <table className="data-table">
+        <colgroup>
+          {columns.map((column) => (
+            <col span={1} style={styleForColumn(column)} />
+          ))}
+        </colgroup>
         <thead>
           <tr>
-            {fields.map((field) => (
-              <th>{field.name}</th>
+            {columns.map((column) => (
+              <th>
+                {column.name}
+              </th>
             ))}
           </tr>
         </thead>
@@ -83,13 +107,14 @@ const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSelectIte
         {tableData.map((item) => (
         <React.Fragment key={`main-${item.id}`}>
           <tr key={`main-${item.id}`} onClick={() => toggleRow(item.id)} className="main-row">
-            {fields.map((field) => (
+            {columns.map((column) => (
               // <span className={`arrow ${expandedRows.includes(item.id) ? 'expanded' : 'collapsed'}`}>&#9660;</span>
-              <td key={field.id}>
+              <td key={column.id}>
                 <input
-                  type={field.type}
-                  value={item[field.id]}
-                  onChange={(e) => handleInputChange(item.id, field.id, field.type === 'number' ? parseInt(e.target.value) : e.target.value)}
+                  type={column.type}
+                  value={item[column.id]}
+                  style={styleForColumn(column)}
+                  onChange={(e) => handleInputChange(item.id, column.id, column.type === 'number' ? parseInt(e.target.value) : e.target.value)}
                 />
               </td>
             ))}
@@ -100,15 +125,16 @@ const HierarchicalTable: React.FC<HierarchicalTableProps> = ({ data, onSelectIte
               className={`sub-row ${expandedRows.includes(item.id) ? 'expanded' : ''}`}
               onClick={() => onSelectItem(subItem)}
             >
-              {fields.map((field) => (
-                <td key={field.id} className="table-row">
+              {columns.map((column) => (
+                <td key={column.id} className="table-row">
                   <input
-                    type={field.type}
-                    value={subItem[field.id]}
+                    type={column.type}
+                    value={subItem[column.id]}
+                    style={styleForColumn(column)}
                     onChange={(e) => handleInputChange(
                       subItem.id,
-                      field.id,
-                      (field.type === 'number'
+                      column.id,
+                      (column.type === 'number'
                        ? parseInt(e.target.value)
                        : e.target.value),
                       true,
